@@ -10,7 +10,9 @@ class InfoCardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
+        backgroundColor: appBarColor,
         title: const Text(
           'My Info Cards',
           style: myStyle,
@@ -29,7 +31,8 @@ class InfoCardScreen extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(context, '/creatInfoCards');
         },
-        child: Icon(Icons.add),
+        child: Icon(Icons.add, color: textColor,),
+        backgroundColor: appBarColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

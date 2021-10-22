@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:info_card_app/constants/constants.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({Key? key, required this.categoryName}) : super(key: key);
@@ -18,7 +19,7 @@ class CategoryCard extends StatelessWidget {
         splashColor: Colors.green[100],
         child: Card(
           elevation: 5,
-          color: Colors.white70,
+          color: cardColor,
           margin: const EdgeInsets.all(15),
           child: Center(
             child: Text(
@@ -26,6 +27,7 @@ class CategoryCard extends StatelessWidget {
               style: const TextStyle(
                 fontFamily: 'Scheherazade',
                 fontSize: 55,
+                color: textColor,
               )
             ),
           ),

@@ -14,9 +14,11 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
+        backgroundColor: appBarColor,
         title: const Text(
-          'Create Category',
+          'Create Info Card',
           style: myStyle,
         ),
       ),
@@ -29,6 +31,7 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
               controller: _controller,
               style: myStyle,
               decoration: const InputDecoration(
+                filled: true,
                 hintText: 'Enter info card name',
                 hintStyle: myStyle,
                 border: OutlineInputBorder(
@@ -49,6 +52,7 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
             ),
             style: ButtonStyle(
               elevation: MaterialStateProperty.all(10),
+              backgroundColor: MaterialStateProperty.all(appBarColor),
             ),
           ),
         ],

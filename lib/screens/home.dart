@@ -33,7 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
+        backgroundColor: appBarColor,
         title: const Text(
           'InfoCard',
           style: myStyle,
@@ -48,9 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/category');
+          Navigator.pushNamed(context, '/creatCategory');
         },
-        child: Icon(Icons.add),
+        child: Icon(Icons.add, color: textColor,),
+        backgroundColor: appBarColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

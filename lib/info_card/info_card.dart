@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:info_card_app/constants/constants.dart';
 
 class InfoCard extends StatelessWidget {
-  const InfoCard(
-      {Key? key, required this.cardName})
-      : super(key: key);
+  const InfoCard({Key? key, required this.cardName}) : super(key: key);
 
   final String cardName;
 
@@ -17,15 +16,15 @@ class InfoCard extends StatelessWidget {
         splashColor: Colors.green[100],
         child: Card(
           elevation: 5,
-          color: Colors.white70,
+          color: cardColor,
           margin: const EdgeInsets.all(15),
           child: Column(
             children: [
               Text(cardName,
                   style: const TextStyle(
-                    fontFamily: 'Scheherazade',
-                    fontSize: 35,
-                  )),
+                      fontFamily: 'Scheherazade',
+                      fontSize: 35,
+                      color: textColor)),
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -35,19 +34,23 @@ class InfoCard extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(right: 10),
-                          child: Text(todaysTime(),
-                              style: const TextStyle(
+                          child: Text(
+                            todaysTime(),
+                            style: const TextStyle(
                                 fontFamily: 'Scheherazade',
                                 fontSize: 20,
-                              ),),
+                                color: textColor),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(right: 10),
-                          child: Text(todaysDate(),
-                              style: const TextStyle(
+                          child: Text(
+                            todaysDate(),
+                            style: const TextStyle(
                                 fontFamily: 'Scheherazade',
                                 fontSize: 20,
-                              ),),
+                                color: textColor),
+                          ),
                         ),
                       ],
                     )

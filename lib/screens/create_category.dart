@@ -16,7 +16,9 @@ class _CreateCategoryState extends State<CreateCategory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
+        backgroundColor: appBarColor,
         title: const Text(
           'Create Category',
           style: myStyle,
@@ -31,6 +33,7 @@ class _CreateCategoryState extends State<CreateCategory> {
               controller: _controller,
               style: myStyle,
               decoration: const InputDecoration(
+                filled: true,
                 hintText: 'Enter category name',
                 hintStyle: myStyle,
                 border: OutlineInputBorder(
@@ -42,15 +45,14 @@ class _CreateCategoryState extends State<CreateCategory> {
             ),
           ),
           ElevatedButton(
-            onPressed: () {
-              //Navigator.pop(context, _controller);
-            },
+            onPressed: () {},
             child: Text(
               'Create',
               style: myStyle,
             ),
             style: ButtonStyle(
               elevation: MaterialStateProperty.all(10),
+              backgroundColor: MaterialStateProperty.all(appBarColor),
             ),
           ),
         ],
