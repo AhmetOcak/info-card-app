@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/category-card/category.dart';
-import 'package:info_card_app/info_card/info_card.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -19,7 +18,6 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     CategoryCard(
       categoryName: 'Math',
-      cardColor: Colors.yellow,
     ),
     CategoryCard(
       categoryName: 'Rocket',

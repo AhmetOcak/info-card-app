@@ -2,10 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({Key? key, required this.categoryName, this.cardColor = Colors.white70}) : super(key: key);
+  const CategoryCard({Key? key, required this.categoryName}) : super(key: key);
 
   final String categoryName;
-  final Color cardColor;
   
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class CategoryCard extends StatelessWidget {
         splashColor: Colors.green[100],
         child: Card(
           elevation: 5,
-          color: cardColor,
+          color: Colors.white70,
           margin: const EdgeInsets.all(15),
           child: Center(
             child: Text(

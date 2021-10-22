@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 class InfoCard extends StatelessWidget {
   const InfoCard(
-      {Key? key, required this.cardName, this.cardColor = Colors.white70})
+      {Key? key, required this.cardName})
       : super(key: key);
 
   final String cardName;
-  final Color cardColor;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class InfoCard extends StatelessWidget {
         splashColor: Colors.green[100],
         child: Card(
           elevation: 5,
-          color: cardColor,
+          color: Colors.white70,
           margin: const EdgeInsets.all(15),
           child: Column(
             children: [

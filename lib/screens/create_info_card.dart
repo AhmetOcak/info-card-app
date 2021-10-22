@@ -43,7 +43,7 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
             onPressed: () {
               //Navigator.pop(context, _controller);
             },
-            child: Text(
+            child: const Text(
               'Create',
               style: myStyle,
             ),
