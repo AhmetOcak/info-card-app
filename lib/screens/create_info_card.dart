@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 
 class CreateInfoCard extends StatefulWidget {
-  CreateInfoCard({Key? key}) : super(key: key);
+  const CreateInfoCard({Key? key}) : super(key: key);
 
   @override
   _CreateInfoCardState createState() => _CreateInfoCardState();
@@ -34,7 +34,11 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
                 filled: true,
                 hintText: 'Enter info card name',
                 hintStyle: myStyle,
-                border: OutlineInputBorder(
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: appBarColor,
+                    width: 2,
+                  ),
                   borderRadius: BorderRadius.all(
                     Radius.circular(20),
                   ),

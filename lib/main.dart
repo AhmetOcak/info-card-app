@@ -9,10 +9,10 @@ void main() {
     MaterialApp(
       initialRoute: '/home',
       routes: {
-        '/home': (context) => MyApp(),
-        '/creatCategory': (context) => CreateCategory(),
-        '/infoCards': (context) => InfoCardScreen(),
-        '/creatInfoCards': (context) => CreateInfoCard(),
+        '/home': (context) => const MyApp(),
+        '/creatCategory': (context) => const CreateCategory(),
+        '/infoCards': (context) => const InfoCardScreen(),
+        '/creatInfoCards': (context) => const CreateInfoCard(),
       },
       debugShowCheckedModeBanner: false,
     ),

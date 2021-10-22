@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 
 class CreateCategory extends StatefulWidget {
-  CreateCategory({Key? key}) : super(key: key);
+  const CreateCategory({Key? key}) : super(key: key);
 
   @override
   _CreateCategoryState createState() => _CreateCategoryState();
@@ -32,11 +32,16 @@ class _CreateCategoryState extends State<CreateCategory> {
             child: TextField(
               controller: _controller,
               style: myStyle,
+              cursorColor: appBarColor,
               decoration: const InputDecoration(
                 filled: true,
                 hintText: 'Enter category name',
                 hintStyle: myStyle,
-                border: OutlineInputBorder(
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: appBarColor,
+                    width: 2,
+                  ),
                   borderRadius: BorderRadius.all(
                     Radius.circular(20),
                   ),
@@ -45,7 +50,9 @@ class _CreateCategoryState extends State<CreateCategory> {
             ),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              FocusScope.of(context).unfocus();
+            },
             child: Text(
               'Create',
               style: myStyle,
