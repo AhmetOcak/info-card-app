@@ -1,17 +1,15 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 
-class CreateCategory extends StatefulWidget {
-  CreateCategory({Key? key}) : super(key: key);
+class CreateInfoCard extends StatefulWidget {
+  CreateInfoCard({Key? key}) : super(key: key);
 
   @override
-  _CreateCategoryState createState() => _CreateCategoryState();
+  _CreateInfoCardState createState() => _CreateInfoCardState();
 }
 
-class _CreateCategoryState extends State<CreateCategory> {
-  final TextEditingController _controller = TextEditingController();
+class _CreateInfoCardState extends State<CreateInfoCard> {
+  TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +29,7 @@ class _CreateCategoryState extends State<CreateCategory> {
               controller: _controller,
               style: myStyle,
               decoration: const InputDecoration(
-                hintText: 'Enter category name',
+                hintText: 'Enter info card name',
                 hintStyle: myStyle,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
