@@ -18,7 +18,7 @@ class _CreateCategoryState extends State<CreateCategory> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: appBarColor,
+        backgroundColor: accentColor,
         title: const Text(
           'Create Category',
           style: myStyle,
@@ -32,14 +32,23 @@ class _CreateCategoryState extends State<CreateCategory> {
             child: TextField(
               controller: _controller,
               style: myStyle,
-              cursorColor: appBarColor,
+              cursorColor: accentColor,
               decoration: const InputDecoration(
                 filled: true,
                 hintText: 'Enter category name',
                 hintStyle: myStyle,
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: appBarColor,
+                    color: accentColor,
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: accentColor,
                     width: 2,
                   ),
                   borderRadius: BorderRadius.all(
@@ -59,7 +68,7 @@ class _CreateCategoryState extends State<CreateCategory> {
             ),
             style: ButtonStyle(
               elevation: MaterialStateProperty.all(10),
-              backgroundColor: MaterialStateProperty.all(appBarColor),
+              backgroundColor: MaterialStateProperty.all(accentColor),
             ),
           ),
         ],

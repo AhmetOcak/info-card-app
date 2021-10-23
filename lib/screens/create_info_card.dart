@@ -16,7 +16,7 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: appBarColor,
+        backgroundColor: accentColor,
         title: const Text(
           'Create Info Card',
           style: myStyle,
@@ -29,6 +29,7 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
             padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
             child: TextField(
               controller: _controller,
+              cursorColor: accentColor,
               style: myStyle,
               decoration: const InputDecoration(
                 filled: true,
@@ -36,7 +37,16 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
                 hintStyle: myStyle,
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: appBarColor,
+                    color: accentColor,
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: accentColor,
                     width: 2,
                   ),
                   borderRadius: BorderRadius.all(
@@ -56,7 +66,7 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
             ),
             style: ButtonStyle(
               elevation: MaterialStateProperty.all(10),
-              backgroundColor: MaterialStateProperty.all(appBarColor),
+              backgroundColor: MaterialStateProperty.all(accentColor),
             ),
           ),
         ],

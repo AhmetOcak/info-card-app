@@ -12,7 +12,7 @@ class InfoCardScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: appBarColor,
+        backgroundColor: accentColor,
         title: const Text(
           'My Info Cards',
           style: myStyle,
@@ -21,18 +21,18 @@ class InfoCardScreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            InfoCard(cardName: 'a'),
-            InfoCard(cardName: 'b'),
-            InfoCard(cardName: 'c'),
+            InfoCard(cardName: '1.ders'),
+            InfoCard(cardName: 'kalkülüs'),
+            InfoCard(cardName: 'sevgili'),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/creatInfoCards');
+          Navigator.pushNamed(context, '/createInfoCards');
         },
         child: Icon(Icons.add, color: textColor,),
-        backgroundColor: appBarColor,
+        backgroundColor: accentColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

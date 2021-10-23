@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: appBarColor,
+        backgroundColor: accentColor,
         title: const Text(
           'InfoCard',
           style: myStyle,
@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.pushNamed(context, '/creatCategory');
         },
         child: Icon(Icons.add, color: textColor,),
-        backgroundColor: appBarColor,
+        backgroundColor: accentColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

@@ -12,7 +12,9 @@ class InfoCard extends StatelessWidget {
       height: MediaQuery.of(context).size.height / 5,
       width: MediaQuery.of(context).size.width / 1.2,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, '/myInfoCard');
+        },
         splashColor: Colors.green[100],
         child: Card(
           elevation: 5,
@@ -20,11 +22,30 @@ class InfoCard extends StatelessWidget {
           margin: const EdgeInsets.all(15),
           child: Column(
             children: [
-              Text(cardName,
-                  style: const TextStyle(
-                      fontFamily: 'Scheherazade',
-                      fontSize: 35,
-                      color: textColor)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 40),
+                    child: Text(
+                      cardName,
+                      style: const TextStyle(
+                      fontFamily: 'Scheherazade', fontSize: 35, color: textColor
+                    ),
+                ),
+                  ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.close,
+                    color: textColor,
+                  ),
+                ),
+              ),
+                ],
+              ),
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -39,7 +60,8 @@ class InfoCard extends StatelessWidget {
                             style: const TextStyle(
                                 fontFamily: 'Scheherazade',
                                 fontSize: 20,
-                                color: textColor),
+                                color: textColor,
+                              ),
                           ),
                         ),
                         Padding(
@@ -49,7 +71,8 @@ class InfoCard extends StatelessWidget {
                             style: const TextStyle(
                                 fontFamily: 'Scheherazade',
                                 fontSize: 20,
-                                color: textColor),
+                                color: textColor,
+                            ),
                           ),
                         ),
                       ],
