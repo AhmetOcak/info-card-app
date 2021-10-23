@@ -4,7 +4,6 @@ import 'package:info_card_app/constants/constants.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({Key? key, required this.categoryName}) : super(key: key);
-
   final String categoryName;
 
   @override
@@ -20,7 +19,7 @@ class CategoryCard extends StatelessWidget {
         child: Card(
           elevation: 5,
           color: cardColor,
-          margin: const EdgeInsets.all(15),
+          margin: const EdgeInsets.all(10),
           child: Column(
             children: [
               Row(

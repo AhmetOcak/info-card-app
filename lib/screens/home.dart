@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/category-card/category.dart';
+import 'package:info_card_app/constants/constants.dart';
+import 'package:info_card_app/lists/category_list.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -12,24 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<CategoryCard> categoryList = [
-    CategoryCard(
-      categoryName: 'Science',
-    ),
-    CategoryCard(
-      categoryName: 'Math',
-    ),
-    CategoryCard(
-      categoryName: 'Rocket',
-    ),
-    CategoryCard(
-      categoryName: 'Girl',
-    ),
-    CategoryCard(
-      categoryName: 'Love',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,14 +26,17 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SingleChildScrollView(
         child: Center(
-          child: Column(
-            children: categoryList,
+          child: Column (
+            children: CategoryList.showCategoryCardList(),
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/creatCategory');
+          Navigator.pushNamed(context, '/createCategory');
+          setState(() {
+            
+          });
         },
         child: Icon(Icons.add, color: textColor,),
         backgroundColor: accentColor,
