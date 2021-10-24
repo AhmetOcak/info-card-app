@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 
 class InfoCard extends StatelessWidget {
-  const InfoCard({Key? key, required this.cardName}) : super(key: key);
+  const InfoCard({Key? key, required this.cardName, required this.time, required this.date}) : super(key: key);
 
   final String cardName;
+  final String time;
+  final String date; 
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,7 @@ class InfoCard extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
-                            todaysTime(),
+                            time,
                             style: const TextStyle(
                               fontFamily: 'Scheherazade',
                               fontSize: 20,
@@ -68,7 +70,7 @@ class InfoCard extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
-                            todaysDate(),
+                            date,
                             style: const TextStyle(
                               fontFamily: 'Scheherazade',
                               fontSize: 20,

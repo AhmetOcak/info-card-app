@@ -24,9 +24,11 @@ class _InfoCardScreenState extends State<InfoCardScreen> {
           style: myStyle,
         ),
       ),
-      body: Center(
-        child: Column(
-          children: widget.infoCardList,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: widget.infoCardList,
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(

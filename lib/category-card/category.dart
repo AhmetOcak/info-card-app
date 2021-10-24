@@ -2,15 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/info_card/info_card.dart';
-import 'package:info_card_app/lists/info_card_list.dart';
 import 'package:info_card_app/screens/info_cards.dart';
 
 class CategoryCard extends StatelessWidget {
   CategoryCard({Key? key, required this.categoryName}) : super(key: key);
   final String categoryName;
-  final List<InfoCard> _infoCardList = [
-    InfoCard(cardName: 'testtir'),
-  ];
+  final List<InfoCard> _infoCardList = [];
 
   @override
   Widget build(BuildContext context) {

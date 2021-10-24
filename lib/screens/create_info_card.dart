@@ -61,7 +61,7 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
           ),
           ElevatedButton(
             onPressed: () {
-              widget.infoCardList.add(InfoCard(cardName: _controller.text));
+              widget.infoCardList.add(InfoCard(cardName: _controller.text, time: todaysTime(), date: todaysDate(),));
               Navigator.pop(context);
             },
             child: const Text(
@@ -78,3 +78,11 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
     );
   }
 }
+
+  String todaysTime() {
+    return DateTime.now().toString().substring(11, 19);
+  }
+
+  String todaysDate() {
+    return DateTime.now().toString().substring(0, 10);
+  }
