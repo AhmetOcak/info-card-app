@@ -1,10 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
+import 'package:info_card_app/info_card/info_card.dart';
+import 'package:info_card_app/lists/info_card_list.dart';
+import 'package:info_card_app/screens/info_cards.dart';
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({Key? key, required this.categoryName}) : super(key: key);
+  CategoryCard({Key? key, required this.categoryName}) : super(key: key);
   final String categoryName;
+  final List<InfoCard> _infoCardList = [
+    InfoCard(cardName: 'testtir'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +19,7 @@ class CategoryCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width / 1.2,
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/infoCards');
+          Navigator.push(context, MaterialPageRoute(builder: (context) => InfoCardScreen(infoCardList: _infoCardList)));
         },
         splashColor: Colors.green[100],
         child: Card(

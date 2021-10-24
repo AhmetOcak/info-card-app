@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/screens/create_category.dart';
 import 'package:info_card_app/screens/create_info_card.dart';
-import 'package:info_card_app/screens/info_card_list.dart';
+import 'package:info_card_app/screens/info_cards.dart';
 import 'package:info_card_app/screens/my_info_card.dart';
 import 'screens/home.dart';
 
@@ -12,8 +12,8 @@ void main() {
       routes: {
         '/home': (context) => const MyApp(),
         '/createCategory': (context) => const CreateCategory(),
-        '/infoCards': (context) => const InfoCardScreen(),
-        '/createInfoCards': (context) => const CreateInfoCard(),
+        '/infoCards': (context) => InfoCardScreen(infoCardList: [],),
+        '/createInfoCards': (context) => CreateInfoCard(infoCardList: [],),
         '/myInfoCard': (context) => MyInfoCard(),
       },
       debugShowCheckedModeBanner: false,

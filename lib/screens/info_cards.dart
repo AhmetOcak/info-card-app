@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/info_card/info_card.dart';
+import 'package:info_card_app/screens/create_info_card.dart';
 
-class InfoCardScreen extends StatelessWidget {
-  const InfoCardScreen({Key? key}) : super(key: key);
+class InfoCardScreen extends StatefulWidget {
+  InfoCardScreen({Key? key, required this.infoCardList}) : super(key: key);
+  List<InfoCard> infoCardList = [];
 
-  // final List<InfoCard> infoCardList;
+  @override
+  State<InfoCardScreen> createState() => _InfoCardScreenState();
+}
+
+class _InfoCardScreenState extends State<InfoCardScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +26,17 @@ class InfoCardScreen extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          children: [
-            InfoCard(cardName: '1.ders'),
-            InfoCard(cardName: 'kalkülüs'),
-            InfoCard(cardName: 'sevgili'),
-          ],
+          children: widget.infoCardList,
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/createInfoCards');
+          Navigator.push(context, MaterialPageRoute(builder: (context) => CreateInfoCard(infoCardList: widget.infoCardList,))).then((_) {
+            setState(() {
+            });
+          });
         },
-        child: Icon(Icons.add, color: textColor,),
+        child: const Icon(Icons.add, color: textColor,),
         backgroundColor: accentColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

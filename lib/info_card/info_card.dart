@@ -30,20 +30,21 @@ class InfoCard extends StatelessWidget {
                     child: Text(
                       cardName,
                       style: const TextStyle(
-                      fontFamily: 'Scheherazade', fontSize: 35, color: textColor
+                          fontFamily: 'Scheherazade',
+                          fontSize: 35,
+                          color: textColor),
                     ),
-                ),
                   ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20),
-                child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.close,
-                    color: textColor,
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.close,
+                        color: textColor,
+                      ),
+                    ),
                   ),
-                ),
-              ),
                 ],
               ),
               Expanded(
@@ -58,10 +59,10 @@ class InfoCard extends StatelessWidget {
                           child: Text(
                             todaysTime(),
                             style: const TextStyle(
-                                fontFamily: 'Scheherazade',
-                                fontSize: 20,
-                                color: textColor,
-                              ),
+                              fontFamily: 'Scheherazade',
+                              fontSize: 20,
+                              color: textColor,
+                            ),
                           ),
                         ),
                         Padding(
@@ -69,9 +70,9 @@ class InfoCard extends StatelessWidget {
                           child: Text(
                             todaysDate(),
                             style: const TextStyle(
-                                fontFamily: 'Scheherazade',
-                                fontSize: 20,
-                                color: textColor,
+                              fontFamily: 'Scheherazade',
+                              fontSize: 20,
+                              color: textColor,
                             ),
                           ),
                         ),

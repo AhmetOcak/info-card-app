@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
+import 'package:info_card_app/info_card/info_card.dart';
+import 'package:info_card_app/lists/info_card_list.dart';
 
 class CreateInfoCard extends StatefulWidget {
-  const CreateInfoCard({Key? key}) : super(key: key);
+  CreateInfoCard({Key? key, required this.infoCardList}) : super(key: key);
+  List<InfoCard> infoCardList = [];
 
   @override
   _CreateInfoCardState createState() => _CreateInfoCardState();
@@ -58,7 +61,8 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
           ),
           ElevatedButton(
             onPressed: () {
-              //Navigator.pop(context, _controller);
+              widget.infoCardList.add(InfoCard(cardName: _controller.text));
+              Navigator.pop(context);
             },
             child: const Text(
               'Create',
