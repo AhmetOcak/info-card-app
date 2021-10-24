@@ -1,16 +1,22 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 
 class MyInfoCard extends StatefulWidget {
-  MyInfoCard({Key? key}) : super(key: key);
+  const MyInfoCard({Key? key}) : super(key: key);
 
   @override
   _MyInfoCardState createState() => _MyInfoCardState();
 }
 
 class _MyInfoCardState extends State<MyInfoCard> {
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: 'test');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,15 +24,20 @@ class _MyInfoCardState extends State<MyInfoCard> {
       appBar: AppBar(
         actions: [
           Padding(
-              padding: EdgeInsets.only(right: 5.0),
-              child: IconButton(
-                onPressed: (){},
-                icon: Icon(
-                  Icons.more_vert,
-                  color: textColor,
-                ),
+            padding: const EdgeInsets.only(right: 5.0),
+            child: IconButton(
+              onPressed: () {
+                setState(() {
+                  Navigator.pop(context);
+                });
+              },
+              icon: const Icon(
+                Icons.check,
+                size: 35,
+                color: textColor,
               ),
             ),
+          ),
         ],
         backgroundColor: accentColor,
         title: const Text(
@@ -40,11 +51,11 @@ class _MyInfoCardState extends State<MyInfoCard> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
-                initialValue: 'merhaba bu deneme',
+                controller: _controller,
                 textAlignVertical: TextAlignVertical.top,
                 cursorColor: accentColor,
-                style: TextStyle(color: accentColor, fontSize: 30),
-                decoration: InputDecoration(
+                style: const TextStyle(color: accentColor, fontSize: 30),
+                decoration: const InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: accentColor,
@@ -55,7 +66,7 @@ class _MyInfoCardState extends State<MyInfoCard> {
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: accentColor,
                       width: 2,
                     ),

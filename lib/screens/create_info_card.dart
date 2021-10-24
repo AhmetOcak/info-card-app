@@ -61,6 +61,7 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
           ),
           ElevatedButton(
             onPressed: () {
+              // category sınıfından InfoCardScreen e oradanda CreateInfoScreen e gelen listeye InfoCard sınıfından bir kart oluşturulup ekleniyor
               widget.infoCardList.add(InfoCard(cardName: _controller.text, time: todaysTime(), date: todaysDate(),));
               Navigator.pop(context);
             },

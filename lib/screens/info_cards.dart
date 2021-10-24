@@ -37,6 +37,7 @@ class _InfoCardScreenState extends State<InfoCardScreen> {
             setState(() {
             });
           });
+          // InfoCardScreen sınıfı constructor ı aracılığıyla aldığı listi info kartı oluşturacak olan CreatInfoCard sayfasına gönderiyor
         },
         child: const Icon(Icons.add, color: textColor,),
         backgroundColor: accentColor,

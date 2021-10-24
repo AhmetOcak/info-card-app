@@ -8,6 +8,7 @@ class CategoryCard extends StatelessWidget {
   CategoryCard({Key? key, required this.categoryName}) : super(key: key);
   final String categoryName;
   final List<InfoCard> _infoCardList = [];
+  // her category kartının, info kartlarını tutacak olan bir listi vardır.
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class CategoryCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) => InfoCardScreen(infoCardList: _infoCardList)));
+          // category kartı, kendisine ait olan, info kartlarını tutan listi info kartlarını gösterecek olan sayfaya gönderiyor. 
         },
         splashColor: Colors.green[100],
         child: Card(
