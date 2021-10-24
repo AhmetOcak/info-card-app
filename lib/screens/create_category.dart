@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/lists/category_list.dart';
+import 'package:info_card_app/screens/home.dart';
 
 class CreateCategory extends StatefulWidget {
   const CreateCategory({Key? key}) : super(key: key);
@@ -19,6 +20,12 @@ class _CreateCategoryState extends State<CreateCategory> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_new, color: textColor,),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
         backgroundColor: accentColor,
         title: const Text(
           'Create Category',
@@ -62,9 +69,8 @@ class _CreateCategoryState extends State<CreateCategory> {
           ElevatedButton(
             onPressed: () {
               FocusScope.of(context).unfocus();
-              setState(() {
-                CategoryList.addCategoryCard(_controller.text);
-              });
+              CategoryList.addCategoryCard(_controller.text);
+              Navigator.pop(context);
             },
             child: Text(
               'Create',

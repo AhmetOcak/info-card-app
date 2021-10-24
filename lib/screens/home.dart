@@ -13,6 +13,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<CategoryCard> _categoryList = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,19 +28,23 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SingleChildScrollView(
         child: Center(
-          child: Column (
-            children: CategoryList.showCategoryCardList(),
+          child: Column(
+            children: _categoryList,
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/createCategory');
-          setState(() {
-            
+          Navigator.pushNamed(context, '/createCategory').then((_) {
+            setState(() {
+              _categoryList = CategoryList.showCategoryCardList();
+            });
           });
         },
-        child: Icon(Icons.add, color: textColor,),
+        child: Icon(
+          Icons.add,
+          color: textColor,
+        ),
         backgroundColor: accentColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
