@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
+import 'package:info_card_app/screens/my_info_card.dart';
 
 class InfoCard extends StatelessWidget {
-  const InfoCard({Key? key, required this.cardName, required this.time, required this.date}) : super(key: key);
+  InfoCard({Key? key, required this.cardName, required this.time, required this.date}) : super(key: key);
 
   final String cardName;
   final String time;
-  final String date; 
+  final String date;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class InfoCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width / 1.2,
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/myInfoCard');
+          Navigator.push(context, MaterialPageRoute(builder: (builder) => MyCard(cardName: cardName,)));
         },
         splashColor: Colors.green[100],
         child: Card(

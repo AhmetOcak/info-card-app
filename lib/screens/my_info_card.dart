@@ -1,21 +1,12 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
+import 'package:info_card_app/screens/edit_my_info_card.dart';
 
-class MyInfoCard extends StatefulWidget {
-  const MyInfoCard({Key? key}) : super(key: key);
-
-  @override
-  _MyInfoCardState createState() => _MyInfoCardState();
-}
-
-class _MyInfoCardState extends State<MyInfoCard> {
-  late TextEditingController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController(text: 'test');
-  }
+class MyCard extends StatelessWidget {
+  MyCard({Key? key, required this.cardName}) : super(key: key);
+  String cardName;
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +18,10 @@ class _MyInfoCardState extends State<MyInfoCard> {
             padding: const EdgeInsets.only(right: 5.0),
             child: IconButton(
               onPressed: () {
-                setState(() {
-                  Navigator.pop(context);
-                });
+                Navigator.push(context, MaterialPageRoute(builder: (builder) => EditInfoCard(cardName: cardName)));
               },
               icon: const Icon(
-                Icons.check,
+                Icons.mode_edit_outline_outlined,
                 size: 35,
                 color: textColor,
               ),
@@ -40,8 +29,8 @@ class _MyInfoCardState extends State<MyInfoCard> {
           ),
         ],
         backgroundColor: accentColor,
-        title: const Text(
-          'Card Name',
+        title: Text(
+          cardName,
           style: myStyle,
         ),
       ),
@@ -50,33 +39,24 @@ class _MyInfoCardState extends State<MyInfoCard> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                controller: _controller,
-                textAlignVertical: TextAlignVertical.top,
-                cursorColor: accentColor,
-                style: const TextStyle(color: accentColor, fontSize: 30),
-                decoration: const InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: accentColor,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: accentColor,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.all(10.0),
+                child: Card(
+                  elevation: 10,
+                  color: backgroundColor,
+                  child: SingleChildScrollView(
+                    child: Text(
+                      "Ahmet iyimisin senin canın çok sıkkın galiba.",
+                      style: TextStyle(
+                        fontFamily: 'Scheherazade',
+                        fontSize: 25,
+                        color: accentColor,
+                      ),
                     ),
                   ),
                 ),
-                maxLines: null,
-                expands: true,
               ),
             ),
           )
