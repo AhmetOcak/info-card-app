@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
-import 'package:info_card_app/database/database.dart';
 import 'package:info_card_app/screens/my_info_card.dart';
+import 'package:info_card_app/database/database.dart';
 
 class InfoCard extends StatelessWidget {
   InfoCard({Key? key, required this.cardName, required this.time, required this.date}) : super(key: key);

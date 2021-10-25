@@ -63,6 +63,8 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
             onPressed: () {
               // category sınıfından InfoCardScreen e oradanda CreateInfoScreen e gelen listeye InfoCard sınıfından bir kart oluşturulup ekleniyor
               widget.infoCardList.add(InfoCard(cardName: _controller.text, time: todaysTime(), date: todaysDate()));
+              // database e card ekleniyor
+              Database.setData(_controller.text, '');
               Navigator.pop(context);
             },
             child: const Text(

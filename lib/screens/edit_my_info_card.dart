@@ -17,7 +17,7 @@ class _EditInfoCardState extends State<EditInfoCard> {
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController(text: '');
+    _controller = TextEditingController(text: Database.getData(widget.cardName));
   }
 
   @override
@@ -37,6 +37,7 @@ class _EditInfoCardState extends State<EditInfoCard> {
             child: IconButton(
               onPressed: () {
                 setState(() {
+                  Database.setData(widget.cardName, _controller.text);
                   Navigator.pop(context);
                 });
               },

@@ -1,14 +1,15 @@
 class Database {
 
   static Map<String, String> database = {
-
+    'as': 'deneme',
   };
 
-  static getData(String cardName) {
+  static String? getData(String cardName) {
+    print('get $cardName');
     return database[cardName];
   }
 
-  static void setData(String text, String cardName) {
+  static void setData(String cardName, String text) {
     database[cardName] = text;
   }
 }
