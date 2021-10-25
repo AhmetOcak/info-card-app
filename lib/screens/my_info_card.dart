@@ -1,13 +1,18 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
+import 'package:info_card_app/database/database.dart';
+import 'package:info_card_app/info_card/info_card.dart';
 import 'package:info_card_app/screens/edit_my_info_card.dart';
 
-class MyCard extends StatelessWidget {
-  MyCard({Key? key, required this.cardName}) : super(key: key);
+class MyCard extends StatefulWidget {
+  MyCard({Key? key, this.cardName = ''}) : super(key: key);
   String cardName;
 
+  @override
+  State<MyCard> createState() => _MyCardState();
+}
+
+class _MyCardState extends State<MyCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +23,11 @@ class MyCard extends StatelessWidget {
             padding: const EdgeInsets.only(right: 5.0),
             child: IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (builder) => EditInfoCard(cardName: cardName)));
+                Navigator.pushNamed(context, '/editInfoCard').then((_) {
+                  setState(() {
+
+                  });
+                });
               },
               icon: const Icon(
                 Icons.mode_edit_outline_outlined,
@@ -30,7 +39,7 @@ class MyCard extends StatelessWidget {
         ],
         backgroundColor: accentColor,
         title: Text(
-          cardName,
+          widget.cardName,
           style: myStyle,
         ),
       ),
@@ -42,14 +51,14 @@ class MyCard extends StatelessWidget {
               child: Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.all(10.0),
+                margin: const EdgeInsets.all(10.0),
                 child: Card(
                   elevation: 10,
                   color: backgroundColor,
                   child: SingleChildScrollView(
                     child: Text(
-                      "Ahmet iyimisin senin canın çok sıkkın galiba.",
-                      style: TextStyle(
+                      'idget.database.getData()',
+                      style: const TextStyle(
                         fontFamily: 'Scheherazade',
                         fontSize: 25,
                         color: accentColor,

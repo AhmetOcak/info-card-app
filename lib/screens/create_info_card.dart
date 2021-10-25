@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
+import 'package:info_card_app/database/database.dart';
 import 'package:info_card_app/info_card/info_card.dart';
 
 class CreateInfoCard extends StatefulWidget {
@@ -61,7 +62,7 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
           ElevatedButton(
             onPressed: () {
               // category sınıfından InfoCardScreen e oradanda CreateInfoScreen e gelen listeye InfoCard sınıfından bir kart oluşturulup ekleniyor
-              widget.infoCardList.add(InfoCard(cardName: _controller.text, time: todaysTime(), date: todaysDate(),));
+              widget.infoCardList.add(InfoCard(cardName: _controller.text, time: todaysTime(), date: todaysDate()));
               Navigator.pop(context);
             },
             child: const Text(

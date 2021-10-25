@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
+import 'package:info_card_app/database/database.dart';
+import 'package:info_card_app/main.dart';
+import 'package:info_card_app/screens/my_info_card.dart';
 
 class EditInfoCard extends StatefulWidget {
   EditInfoCard({Key? key, required this.cardName}) : super(key: key);
   String cardName;
-
   @override
   _EditInfoCardState createState() => _EditInfoCardState();
 }
@@ -16,6 +18,12 @@ class _EditInfoCardState extends State<EditInfoCard> {
   void initState() {
     super.initState();
     _controller = TextEditingController(text: '');
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 
   @override

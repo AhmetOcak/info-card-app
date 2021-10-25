@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:info_card_app/category-card/category.dart';
 import 'package:info_card_app/constants/constants.dart';
@@ -41,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
             });
           });
         },
-        child: Icon(
+        child: const Icon(
           Icons.add,
           color: textColor,
         ),

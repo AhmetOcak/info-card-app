@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:info_card_app/database/database.dart';
 import 'package:info_card_app/screens/create_category.dart';
 import 'package:info_card_app/screens/create_info_card.dart';
 import 'package:info_card_app/screens/info_cards.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
+import 'package:info_card_app/database/database.dart';
 import 'package:info_card_app/screens/my_info_card.dart';
 
 class InfoCard extends StatelessWidget {
@@ -35,7 +36,8 @@ class InfoCard extends StatelessWidget {
                       style: const TextStyle(
                           fontFamily: 'Scheherazade',
                           fontSize: 35,
-                          color: textColor),
+                          color: textColor,
+                        ),
                     ),
                   ),
                   Padding(
