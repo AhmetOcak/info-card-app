@@ -12,7 +12,7 @@ class CreateInfoCard extends StatefulWidget {
 }
 
 class _CreateInfoCardState extends State<CreateInfoCard> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

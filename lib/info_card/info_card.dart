@@ -4,7 +4,7 @@ import 'package:info_card_app/screens/my_info_card.dart';
 import 'package:info_card_app/database/database.dart';
 
 class InfoCard extends StatelessWidget {
-  InfoCard({Key? key, required this.cardName, required this.time, required this.date}) : super(key: key);
+  const InfoCard({Key? key, required this.cardName, required this.time, required this.date}) : super(key: key);
 
   final String cardName;
   final String time;
@@ -13,7 +13,7 @@ class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 5,
+      height: MediaQuery.of(context).size.height / 4,
       width: MediaQuery.of(context).size.width / 1.2,
       child: InkWell(
         onTap: () {

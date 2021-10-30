@@ -3,7 +3,7 @@ import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/database/database.dart';
 
 class MyCard extends StatefulWidget {
-  MyCard({Key? key, this.cardName = ''}) : super(key: key);
+  MyCard({Key? key, required this.cardName}) : super(key: key);
   String cardName;
 
   @override
@@ -25,7 +25,7 @@ class _MyCardState extends State<MyCard> {
               onPressed: () {
                 Navigator.pushNamed(context, '/editInfoCard').then((_) {
                   setState(() {
-                    print('my info ${widget.cardName}');
+                    print(Database.database);
                     _myText = Database.getData(widget.cardName)!;
                   });
                 });
