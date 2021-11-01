@@ -10,4 +10,5 @@ class CategoryList {
   static List<CategoryCard> showCategoryCardList() {
     return categoryList;
   }
+
 }

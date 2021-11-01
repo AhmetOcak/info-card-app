@@ -4,7 +4,7 @@ import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/lists/category_list.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();

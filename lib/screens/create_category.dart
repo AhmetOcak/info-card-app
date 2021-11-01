@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/lists/category_list.dart';
@@ -20,7 +18,7 @@ class _CreateCategoryState extends State<CreateCategory> {
       backgroundColor: backgroundColor,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new, color: textColor,),
+          icon: const Icon(Icons.arrow_back_ios_new, color: textColor,),
           onPressed: (){
             Navigator.pop(context);
           },
@@ -71,7 +69,7 @@ class _CreateCategoryState extends State<CreateCategory> {
               CategoryList.addCategoryCard(_controller.text);
               Navigator.pop(context);
             },
-            child: Text(
+            child: const Text(
               'Create',
               style: myStyle,
             ),

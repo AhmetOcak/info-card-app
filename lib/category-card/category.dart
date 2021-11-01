@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/info_card/info_card.dart';
+import 'package:info_card_app/lists/category_list.dart';
+import 'package:info_card_app/screens/home.dart';
 import 'package:info_card_app/screens/info_cards.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -31,7 +33,9 @@ class CategoryCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      CategoryList.categoryList.remove(this);
+                    },
                     icon: const Icon(
                       Icons.close,
                       color: textColor,

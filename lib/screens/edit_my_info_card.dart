@@ -17,6 +17,12 @@ class _EditInfoCardState extends State<EditInfoCard> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new, color: textColor,),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 5.0),

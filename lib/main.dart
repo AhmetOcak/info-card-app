@@ -13,8 +13,8 @@ void main() {
       routes: {
         '/home': (context) => const MyApp(),
         '/createCategory': (context) => const CreateCategory(),
-        '/infoCards': (context) => InfoCardScreen(infoCardList: [],),
-        '/createInfoCards': (context) => CreateInfoCard(infoCardList: [],),
+        '/infoCards': (context) => InfoCardScreen(infoCardList: const [],),
+        '/createInfoCards': (context) => CreateInfoCard(infoCardList: const [],),
         '/editInfoCard': (context) => EditInfoCard(cardName: '',),
         '/myCard': (context) => MyCard(cardName: '',),
       },
@@ -28,6 +28,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomeScreen();
+    return const HomeScreen();
   }
 }

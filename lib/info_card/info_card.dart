@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/screens/my_info_card.dart';
-import 'package:info_card_app/database/database.dart';
 
 class InfoCard extends StatelessWidget {
   const InfoCard({Key? key, required this.cardName, required this.time, required this.date}) : super(key: key);
@@ -43,7 +42,9 @@ class InfoCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+
+                      },
                       icon: const Icon(
                         Icons.close,
                         color: textColor,

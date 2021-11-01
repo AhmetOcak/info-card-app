@@ -19,6 +19,12 @@ class _InfoCardScreenState extends State<InfoCardScreen> {
       backgroundColor: backgroundColor,
       appBar: AppBar(
         backgroundColor: accentColor,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new, color: textColor,),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
         title: const Text(
           'My Info Cards',
           style: myStyle,
