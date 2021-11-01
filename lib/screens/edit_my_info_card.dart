@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/database/database.dart';
-import 'package:info_card_app/main.dart';
-import 'package:info_card_app/screens/my_info_card.dart';
 
 class EditInfoCard extends StatefulWidget {
   EditInfoCard({Key? key, required this.cardName}) : super(key: key);
@@ -12,19 +10,7 @@ class EditInfoCard extends StatefulWidget {
 }
 
 class _EditInfoCardState extends State<EditInfoCard> {
-  late TextEditingController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController(text: Database.getData(widget.cardName));
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
+  String text = '';
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +23,8 @@ class _EditInfoCardState extends State<EditInfoCard> {
             child: IconButton(
               onPressed: () {
                 setState(() {
-                  Database.setData(widget.cardName, _controller.text);
+                  Database.setData(widget.cardName, text);
+                  print(Database.database);
                   Navigator.pop(context);
                 });
               },
@@ -61,7 +48,9 @@ class _EditInfoCardState extends State<EditInfoCard> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
-                controller: _controller,
+                onChanged: (val) {
+                  text = val;
+                },
                 textAlignVertical: TextAlignVertical.top,
                 cursorColor: accentColor,
                 style: const TextStyle(color: accentColor, fontSize: 30),

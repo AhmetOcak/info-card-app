@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/database/database.dart';
+import 'package:info_card_app/screens/edit_my_info_card.dart';
 
 class MyCard extends StatefulWidget {
-  MyCard({Key? key, required this.cardName}) : super(key: key);
+  MyCard({Key? key, required this.cardName, this.text = ''}) : super(key: key);
   String cardName;
+  String text;
 
   @override
   State<MyCard> createState() => _MyCardState();
 }
 
 class _MyCardState extends State<MyCard> {
-  String _myText = '';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,11 +23,9 @@ class _MyCardState extends State<MyCard> {
             padding: const EdgeInsets.only(right: 5.0),
             child: IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/editInfoCard').then((_) {
-                  setState(() {
-                    print(Database.database);
-                    _myText = Database.getData(widget.cardName)!;
-                  });
+                Navigator.push(context, MaterialPageRoute(builder: (builder) => EditInfoCard(cardName: widget.cardName)));
+                setState(() {
+                  
                 });
               },
               icon: const Icon(
@@ -58,7 +56,7 @@ class _MyCardState extends State<MyCard> {
                   color: backgroundColor,
                   child: SingleChildScrollView(
                     child: Text(
-                      _myText,
+                      Database.getData(widget.cardName) == null ? '' : Database.getData(widget.cardName).toString(),
                       style: const TextStyle(
                         fontFamily: 'Scheherazade',
                         fontSize: 25,
@@ -69,7 +67,7 @@ class _MyCardState extends State<MyCard> {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
