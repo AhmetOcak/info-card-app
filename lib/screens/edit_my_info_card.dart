@@ -24,7 +24,6 @@ class _EditInfoCardState extends State<EditInfoCard> {
               onPressed: () {
                 setState(() {
                   Database.setData(widget.cardName, text);
-                  print(Database.database);
                   Navigator.pop(context);
                 });
               },
@@ -51,6 +50,7 @@ class _EditInfoCardState extends State<EditInfoCard> {
                 onChanged: (val) {
                   text = val;
                 },
+                initialValue: Database.getData(widget.cardName),
                 textAlignVertical: TextAlignVertical.top,
                 cursorColor: accentColor,
                 style: const TextStyle(color: accentColor, fontSize: 30),

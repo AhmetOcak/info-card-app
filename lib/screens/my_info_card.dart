@@ -55,12 +55,15 @@ class _MyCardState extends State<MyCard> {
                   elevation: 10,
                   color: backgroundColor,
                   child: SingleChildScrollView(
-                    child: Text(
-                      Database.getData(widget.cardName) == null ? '' : Database.getData(widget.cardName).toString(),
-                      style: const TextStyle(
-                        fontFamily: 'Scheherazade',
-                        fontSize: 25,
-                        color: accentColor,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        Database.getData(widget.cardName) == null ? '' : Database.getData(widget.cardName).toString(),
+                        style: const TextStyle(
+                          fontFamily: 'Scheherazade',
+                          fontSize: 30,
+                          color: accentColor,
+                        ),
                       ),
                     ),
                   ),

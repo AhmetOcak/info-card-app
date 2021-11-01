@@ -9,6 +9,8 @@ class Database {
   }
 
   static void setData(String cardName, String text) {
+    database[cardName] = text;
+    /*
     String? temp1 = '';
     String temp2 = '';
 
@@ -18,5 +20,6 @@ class Database {
       temp2 += text;
       database[cardName] = temp2;
     }
+    */
   }
 }
