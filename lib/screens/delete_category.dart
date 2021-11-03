@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:info_card_app/category-card/category.dart';
 import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/lists/category_list.dart';
-import 'package:info_card_app/screens/home.dart';
 
 class DeleteCategoryCard extends StatelessWidget {
   DeleteCategoryCard({Key? key, required this.categoryCard}) : super(key: key);
