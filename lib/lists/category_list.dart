@@ -1,4 +1,4 @@
-import 'package:info_card_app/category-card/category.dart';
+import 'package:info_card_app/components/category.dart';
 
 class CategoryList {
   static List<CategoryCard> categoryList = [];

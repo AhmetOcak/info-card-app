@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:info_card_app/constants/constants.dart';
+import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/database/database.dart';
-import 'package:info_card_app/info_card/info_card.dart';
+import 'package:info_card_app/components/info_card.dart';
 
 class CreateInfoCard extends StatefulWidget {
   CreateInfoCard({Key? key, required this.infoCardList}) : super(key: key);

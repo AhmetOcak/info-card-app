@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:info_card_app/category-card/category.dart';
+import 'package:info_card_app/components/category.dart';
 import 'package:info_card_app/screens/create_category.dart';
 import 'package:info_card_app/screens/create_info_card.dart';
 import 'package:info_card_app/screens/delete_category.dart';
@@ -9,6 +9,7 @@ import 'screens/edit_my_info_card.dart';
 import 'screens/home.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MaterialApp(
       initialRoute: '/home',

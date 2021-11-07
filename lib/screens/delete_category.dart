@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:info_card_app/category-card/category.dart';
-import 'package:info_card_app/constants/constants.dart';
+import 'package:info_card_app/components/category.dart';
+import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/lists/category_list.dart';
 
 class DeleteCategoryCard extends StatelessWidget {

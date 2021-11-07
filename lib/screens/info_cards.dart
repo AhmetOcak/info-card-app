@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:info_card_app/constants/constants.dart';
-import 'package:info_card_app/info_card/info_card.dart';
+import 'package:info_card_app/constants.dart';
+import 'package:info_card_app/components/info_card.dart';
 import 'package:info_card_app/screens/create_info_card.dart';
 
 class InfoCardScreen extends StatefulWidget {
