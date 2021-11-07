@@ -5,8 +5,8 @@ import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/lists/category_list.dart';
 
 class DeleteCategoryCard extends StatelessWidget {
-  DeleteCategoryCard({Key? key, required this.categoryCard}) : super(key: key);
-  CategoryCard categoryCard;
+  const DeleteCategoryCard({Key? key, required this.categoryCard}) : super(key: key);
+  final CategoryCard categoryCard;
 
   @override
   Widget build(BuildContext context) {
