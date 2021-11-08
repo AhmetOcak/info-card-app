@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,31 +27,25 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: FutureBuilder<List<Category>>(
           future: DatabaseHelper.instance.getCategoryList(),
-          builder:
-              (BuildContext context, AsyncSnapshot<List<Category>> snapshot) {
-            if (!snapshot.hasData) {
-              return const Center(
-                child: Text('Loading ..'),
-              );
+          builder: (BuildContext context, AsyncSnapshot<List<Category>> snapshot) {
+            if(!snapshot.hasData) {
+              return const Center(child: Text('Loading ..'),);
             }
-            return snapshot.data!.isEmpty
-                ? const Center(
-                    child: Text('no data'),
-                  )
-                : ListView(
-                    children: snapshot.data!.map((category) {
-                      return Center(
-                        child: CategoryCard(categoryName: category.name, id: category.id,),
-                      );
-                    }).toList(),
-                  );
+            return snapshot.data!.isEmpty ? const Center(child: Text('no data'),) : 
+            ListView(children: snapshot.data!.map((category) {
+              return Center(
+                child: CategoryCard(categoryName: category.name,),
+              );
+            }).toList(),);
           },
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, '/createCategory').then((_) {
-            setState(() {});
+            setState(() {
+              
+            });
           });
         },
         child: const Icon(
@@ -63,3 +58,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+

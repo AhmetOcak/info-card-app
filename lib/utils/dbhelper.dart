@@ -20,7 +20,12 @@ class DatabaseHelper {
       path,
       version: 1,
       onCreate: _onCreate,
+      onConfigure: _onConfigure,
     );
+  }
+
+  Future _onConfigure(Database database) async {
+    await database.execute('PRAGMA foreign_keys = ON');
   }
 
   Future _onCreate(Database database, int version) async {

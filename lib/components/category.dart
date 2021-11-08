@@ -5,7 +5,7 @@ import 'package:info_card_app/screens/info_cards.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
 class CategoryCard extends StatelessWidget {
-  CategoryCard({Key? key, required this.categoryName, this.id}) : super(key: key);
+  CategoryCard({Key? key, required this.categoryName,this.id}) : super(key: key);
   String categoryName;
   int? id;
 
