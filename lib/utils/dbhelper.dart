@@ -27,16 +27,16 @@ class DatabaseHelper {
     await database.execute('''
         CREATE TABLE categoryCard (
           id INTEGER PRIMARY KEY,
-          name TEXT,
+          name TEXT
         )
       ''');
     await database.execute('''
         CREATE TABLE infoCard (
           id INTEGER PRIMARY KEY,
-          catId INTEGER FOREIGN KEY REFERENCES categoryCard(id),
+          catId INTEGER REFERENCES categoryCard(id),
           name TEXT,
           data TEXT,
-          creatingTime TEXT,
+          creatingTime TEXT
         )
       ''');
   }

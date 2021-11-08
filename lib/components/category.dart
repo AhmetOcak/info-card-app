@@ -2,13 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/components/info_card.dart';
-import 'package:info_card_app/screens/delete_category.dart';
 import 'package:info_card_app/screens/info_cards.dart';
+import 'package:info_card_app/utils/dbhelper.dart';
 
 class CategoryCard extends StatelessWidget {
-  CategoryCard({Key? key, required this.categoryName}) : super(key: key);
+  CategoryCard({Key? key, required this.categoryName, this.id}) : super(key: key);
   final List<InfoCard> _infoCardList = [];
   String categoryName;
+  int? id;
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +41,7 @@ class CategoryCard extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              DeleteCategoryCard(categoryCard: this),
-                        ),
-                      );
+                      DatabaseHelper.instance.removeCategoryCard(id!);
                     },
                     icon: const Icon(
                       Icons.close,

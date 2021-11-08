@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
-import 'package:info_card_app/lists/category_list.dart';
+import 'package:info_card_app/models/category_model.dart';
+import 'package:info_card_app/utils/dbhelper.dart';
 
 class CreateCategory extends StatefulWidget {
   const CreateCategory({Key? key}) : super(key: key);
@@ -64,10 +65,13 @@ class _CreateCategoryState extends State<CreateCategory> {
             ),
           ),
           ElevatedButton(
-            onPressed: () {
+            onPressed: () async {
               FocusScope.of(context).unfocus();
-              CategoryList.addCategoryCard(_controller.text);
+              await DatabaseHelper.instance.addCategoryCard(Category(name: _controller.text));
               Navigator.pop(context);
+              setState(() {
+                _controller.clear();
+              });
             },
             child: const Text(
               'Create',

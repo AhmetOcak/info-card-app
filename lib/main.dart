@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:info_card_app/components/category.dart';
 import 'package:info_card_app/screens/create_category.dart';
 import 'package:info_card_app/screens/create_info_card.dart';
-import 'package:info_card_app/screens/delete_category.dart';
 import 'package:info_card_app/screens/info_cards.dart';
 import 'package:info_card_app/screens/my_info_card.dart';
 import 'screens/edit_my_info_card.dart';
@@ -20,7 +19,6 @@ void main() {
         '/createInfoCards': (context) => CreateInfoCard(infoCardList: const [],),
         '/editInfoCard': (context) => EditInfoCard(cardName: '',),
         '/myCard': (context) => MyCard(cardName: '',),
-        '/deleteCategory': (context) => DeleteCategoryCard(categoryCard: CategoryCard(categoryName: ''),),
       },
       debugShowCheckedModeBanner: false,
     ),
