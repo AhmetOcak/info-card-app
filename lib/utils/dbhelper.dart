@@ -26,17 +26,18 @@ class DatabaseHelper {
   Future _onCreate(Database database, int version) async {
     await database.execute('''
         CREATE TABLE categoryCard (
-          id INTEGER PRIMARY KEY,
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
           name TEXT
         )
       ''');
     await database.execute('''
         CREATE TABLE infoCard (
-          id INTEGER PRIMARY KEY,
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
           catId INTEGER REFERENCES categoryCard(id),
           name TEXT,
           data TEXT,
-          creatingTime TEXT
+          creatingTime TEXT,
+          creatingDay TEXT
         )
       ''');
   }
@@ -50,11 +51,11 @@ class DatabaseHelper {
     return categoryList;
   }
 
-  Future<List<InfoCard>> getInfoCardList() async {
+  Future<List<InfoCardModel>> getInfoCardList() async {
     Database database = await instance.database;
-    var infoCards = await database.query('infoCard', orderBy: 'name');
-    List<InfoCard> infoCardList = infoCards.isNotEmpty
-        ? infoCards.map((e) => InfoCard.fromMap(e)).toList()
+    var infoCards = await database.query('infoCard', orderBy: 'name',);
+    List<InfoCardModel> infoCardList = infoCards.isNotEmpty
+        ? infoCards.map((e) => InfoCardModel.fromMap(e)).toList()
         : [];
     return infoCardList;
   }
@@ -64,7 +65,7 @@ class DatabaseHelper {
     return await database.insert('categoryCard', category.toMap());
   }
 
-  Future<int> addInfoCard(InfoCard infoCard) async {
+  Future<int> addInfoCard(InfoCardModel infoCard) async {
     Database database = await instance.database;
     return await database.insert('infoCard', infoCard.toMap());
   }
@@ -84,7 +85,7 @@ class DatabaseHelper {
     return await database.update('categoryCard', category.toMap(), where: 'id = ?', whereArgs: [category.id]);
   }
 
-  Future<int> uptadeInfoCard(InfoCard infoCard) async {
+  Future<int> uptadeInfoCard(InfoCardModel infoCard) async {
     Database database = await instance.database;
     return await database.update('infoCard', infoCard.toMap(), where: 'id = ?', whereArgs: [infoCard.id]);
   }

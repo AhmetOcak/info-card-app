@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
-import 'package:info_card_app/database/database.dart';
 import 'package:info_card_app/components/info_card.dart';
+import 'package:info_card_app/models/infocard_model.dart';
+import 'package:info_card_app/utils/dbhelper.dart';
 
 class CreateInfoCard extends StatefulWidget {
   CreateInfoCard({Key? key, required this.infoCardList}) : super(key: key);
@@ -60,10 +61,8 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
             ),
           ),
           ElevatedButton(
-            onPressed: () {
-              // category sınıfından InfoCardScreen e oradanda CreateInfoScreen e gelen listeye InfoCard sınıfından bir kart oluşturulup ekleniyor
-              widget.infoCardList.add(InfoCard(cardName: _controller.text, time: todaysTime(), date: todaysDate()));
-              Database.database[_controller.text] = '';
+            onPressed: () async {
+              await DatabaseHelper.instance.addInfoCard(InfoCardModel(name: _controller.text, data: '', creatingTime: todaysTime(), creatingDay: todaysDate()));
               Navigator.pop(context);
             },
             child: const Text(

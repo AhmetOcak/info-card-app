@@ -1,18 +1,20 @@
-class InfoCard {
+class InfoCardModel {
   final int? catId;
   final int? id;
   final String name;
   final String data;
   final String creatingTime;
+  final String creatingDay;
 
-  InfoCard({this.catId, this.id, required this.name, required this.data, required this.creatingTime});
+  InfoCardModel({this.catId, this.id, required this.name, required this.data, required this.creatingTime, required this.creatingDay});
 
-  factory InfoCard.fromMap(Map<String, dynamic> json) => InfoCard(
+  factory InfoCardModel.fromMap(Map<String, dynamic> json) => InfoCardModel(
         catId: json['catId'],
         id: json['id'],
         name: json['name'],
         data: json['data'],
         creatingTime: json['creatingTime'],
+        creatingDay: json['creatingDay'],
       );
 
   Map<String, dynamic> toMap() {
@@ -22,6 +24,7 @@ class InfoCard {
       'name': name,
       'data': data,
       'creatingTime': creatingTime,
+      'creatingDay': creatingDay,
     };
   }
 }

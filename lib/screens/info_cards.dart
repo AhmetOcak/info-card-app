@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/components/info_card.dart';
+import 'package:info_card_app/models/infocard_model.dart';
 import 'package:info_card_app/screens/create_info_card.dart';
+import 'package:info_card_app/utils/dbhelper.dart';
 
 class InfoCardScreen extends StatefulWidget {
-  InfoCardScreen({Key? key, required this.infoCardList}) : super(key: key);
+  InfoCardScreen({Key? key}) : super(key: key);
   List<InfoCard> infoCardList = [];
 
   @override
@@ -30,11 +32,20 @@ class _InfoCardScreenState extends State<InfoCardScreen> {
           style: myStyle,
         ),
       ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: widget.infoCardList,
-          ),
+      body: Center(
+        child: FutureBuilder<List<InfoCardModel>> (
+          future: DatabaseHelper.instance.getInfoCardList(),
+          builder: (BuildContext context, AsyncSnapshot<List<InfoCardModel>> snapshot) {
+            if(!snapshot.hasData) {
+              return const Center(child: Text('Loading'),);
+            }
+            return snapshot.data!.isEmpty ? const Center(child: Text('no data'),) : 
+            ListView(children: snapshot.data!.map((infoCardModel) {
+              return Center(
+                child: InfoCard(cardName: infoCardModel.name, time: infoCardModel.creatingTime, date: infoCardModel.creatingDay),
+              );
+            }).toList(),);
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(

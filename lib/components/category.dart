@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
-import 'package:info_card_app/components/info_card.dart';
 import 'package:info_card_app/screens/info_cards.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
 class CategoryCard extends StatelessWidget {
   CategoryCard({Key? key, required this.categoryName, this.id}) : super(key: key);
-  final List<InfoCard> _infoCardList = [];
   String categoryName;
   int? id;
 
@@ -17,15 +15,14 @@ class CategoryCard extends StatelessWidget {
       height: MediaQuery.of(context).size.height / 4.5,
       width: MediaQuery.of(context).size.width / 1.2,
       child: InkWell(
-        onTap: () {
+        onTap: () { 
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => InfoCardScreen(
-                infoCardList: _infoCardList,
-              ),
+              builder: (context) => InfoCardScreen(),
             ),
           );
+          
           // category kartı, kendisine ait olan, info kartlarını tutan listi info kartlarını gösterecek olan sayfaya gönderiyor.
         },
         splashColor: Colors.green[100],
@@ -40,8 +37,8 @@ class CategoryCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    onPressed: () {
-                      DatabaseHelper.instance.removeCategoryCard(id!);
+                    onPressed: () async {
+                      await DatabaseHelper.instance.removeCategoryCard(id!);
                     },
                     icon: const Icon(
                       Icons.close,
