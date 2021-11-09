@@ -1,6 +1,8 @@
 # info_card_app
 
-A new Flutter project.
+The project is under development.
+
+The project is not yet completed.
 
 ## Getting Started
 
