@@ -4,7 +4,8 @@ import 'package:info_card_app/models/infocard_model.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
 class CreateInfoCard extends StatefulWidget {
-  CreateInfoCard({Key? key}) : super(key: key);
+  CreateInfoCard({Key? key, required this.catId}) : super(key: key);
+  final int? catId;
 
   @override
   _CreateInfoCardState createState() => _CreateInfoCardState();
@@ -60,7 +61,7 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
           ),
           ElevatedButton(
             onPressed: () async {
-              await DatabaseHelper.instance.addInfoCard(InfoCardModel(name: _controller.text, data: '', creatingTime: todaysTime(), creatingDay: todaysDate(),));
+              await DatabaseHelper.instance.addInfoCard(InfoCardModel(name: _controller.text, data: '', creatingTime: todaysTime(), creatingDay: todaysDate(), catId: widget.catId!,));
               Navigator.pop(context);
             },
             child: const Text(

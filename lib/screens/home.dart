@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return snapshot.data!.isEmpty ? const Center(child: Text('no data'),) : 
             ListView(children: snapshot.data!.map((category) {
               return Center(
-                child: CategoryCard(categoryName: category.name,),
+                child: CategoryCard(categoryName: category.name, id: category.id,),
               );
             }).toList(),);
           },

@@ -57,9 +57,9 @@ class DatabaseHelper {
     return categoryList;
   }
 
-  Future<List<InfoCardModel>> getInfoCardList() async {
+  Future<List<InfoCardModel>> getInfoCardList(int? catId) async {
     Database database = await instance.database;
-    var infoCards = await database.query('infoCard', orderBy: 'name',);
+    var infoCards = await database.query('infoCard', orderBy: 'name', where: 'catId = ?', whereArgs: [catId]);
     List<InfoCardModel> infoCardList = infoCards.isNotEmpty
         ? infoCards.map((e) => InfoCardModel.fromMap(e)).toList()
         : [];

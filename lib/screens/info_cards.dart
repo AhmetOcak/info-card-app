@@ -6,7 +6,8 @@ import 'package:info_card_app/screens/create_info_card.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
 class InfoCardScreen extends StatefulWidget {
-  const InfoCardScreen({Key? key}) : super(key: key);
+  const InfoCardScreen({Key? key, required this.catId}) : super(key: key);
+  final int? catId;
 
   @override
   State<InfoCardScreen> createState() => _InfoCardScreenState();
@@ -33,7 +34,7 @@ class _InfoCardScreenState extends State<InfoCardScreen> {
       ),
       body: Center(
         child: FutureBuilder<List<InfoCardModel>> (
-          future: DatabaseHelper.instance.getInfoCardList(),
+          future: DatabaseHelper.instance.getInfoCardList(widget.catId),
           builder: (BuildContext context, AsyncSnapshot<List<InfoCardModel>> snapshot) {
             if(!snapshot.hasData) {
               return const Center(child: Text('Loading'),);
@@ -49,7 +50,7 @@ class _InfoCardScreenState extends State<InfoCardScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => CreateInfoCard())).then((_) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => CreateInfoCard(catId: widget.catId!,))).then((_) {
             setState(() {
             });
           });
