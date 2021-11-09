@@ -42,7 +42,7 @@ class _InfoCardScreenState extends State<InfoCardScreen> {
             return snapshot.data!.isEmpty ? const Center(child: Text('no data'),) : 
             ListView(children: snapshot.data!.map((infoCardModel) {
               return Center(
-                child: InfoCard(cardName: infoCardModel.name, time: infoCardModel.creatingTime, date: infoCardModel.creatingDay),
+                child: InfoCard(cardName: infoCardModel.name, time: infoCardModel.creatingTime, date: infoCardModel.creatingDay, catId: widget.catId,),
               );
             }).toList(),);
           },

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
-import 'package:info_card_app/database/database.dart';
+import 'package:info_card_app/models/infocard_model.dart';
+import 'package:info_card_app/utils/dbhelper.dart';
 
 class EditInfoCard extends StatefulWidget {
-  EditInfoCard({Key? key, required this.cardName}) : super(key: key);
-  String cardName;
+  const EditInfoCard({Key? key, required this.cardName, this.catId,}) : super(key: key);
+  final String cardName;
+  final int? catId;
+  
   @override
   _EditInfoCardState createState() => _EditInfoCardState();
 }
@@ -28,8 +31,9 @@ class _EditInfoCardState extends State<EditInfoCard> {
             padding: const EdgeInsets.only(right: 5.0),
             child: IconButton(
               onPressed: () {
-                setState(() {
-                  Database.setData(widget.cardName, text);
+                setState(() async {
+                  // uptade state
+                  
                   Navigator.pop(context);
                 });
               },
@@ -56,7 +60,7 @@ class _EditInfoCardState extends State<EditInfoCard> {
                 onChanged: (val) {
                   text = val;
                 },
-                initialValue: Database.getData(widget.cardName),
+                //initialValue: ,
                 textAlignVertical: TextAlignVertical.top,
                 cursorColor: accentColor,
                 style: const TextStyle(color: accentColor, fontSize: 30),

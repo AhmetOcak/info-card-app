@@ -17,7 +17,7 @@ void main() {
         '/infoCards': (context) => const  InfoCardScreen(catId: null,),
         '/createInfoCards': (context) => CreateInfoCard(catId: null,),
         '/editInfoCard': (context) => EditInfoCard(cardName: '',),
-        '/myCard': (context) => MyCard(cardName: '',),
+        '/myCard': (context) => const MyCard(cardName: '', catId: null,),
       },
       debugShowCheckedModeBanner: false,
     ),

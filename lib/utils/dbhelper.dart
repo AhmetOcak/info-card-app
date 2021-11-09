@@ -59,7 +59,8 @@ class DatabaseHelper {
 
   Future<List<InfoCardModel>> getInfoCardList(int? catId) async {
     Database database = await instance.database;
-    var infoCards = await database.query('infoCard', orderBy: 'name', where: 'catId = ?', whereArgs: [catId]);
+    var infoCards = await database.query('infoCard',
+        orderBy: 'name', where: 'catId = ?', whereArgs: [catId]);
     List<InfoCardModel> infoCardList = infoCards.isNotEmpty
         ? infoCards.map((e) => InfoCardModel.fromMap(e)).toList()
         : [];
@@ -68,31 +69,55 @@ class DatabaseHelper {
 
   Future<int> addCategoryCard(Category category) async {
     Database database = await instance.database;
-    return await database.insert('categoryCard', category.toMap());
+    return await database.insert(
+      'categoryCard',
+      category.toMap(),
+    );
   }
 
   Future<int> addInfoCard(InfoCardModel infoCard) async {
     Database database = await instance.database;
-    return await database.insert('infoCard', infoCard.toMap());
+    return await database.insert(
+      'infoCard',
+      infoCard.toMap(),
+    );
   }
 
   Future<int> removeCategoryCard(int id) async {
     Database database = await instance.database;
-    return await database.delete('categoryCard', where: 'id = ?', whereArgs: [id]);
+    return await database.delete(
+      'categoryCard',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
   }
 
   Future<int> removeInfoCard(int id) async {
     Database database = await instance.database;
-    return await database.delete('infoCard', where: 'id = ?', whereArgs: [id]);
+    return await database.delete(
+      'infoCard',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
   }
 
   Future<int> uptadeCategoryCard(Category category) async {
     Database database = await instance.database;
-    return await database.update('categoryCard', category.toMap(), where: 'id = ?', whereArgs: [category.id]);
+    return await database.update(
+      'categoryCard',
+      category.toMap(),
+      where: 'id = ?',
+      whereArgs: [category.id],
+    );
   }
 
-  Future<int> uptadeInfoCard(InfoCardModel infoCard) async {
+  Future<int> uptadeInfoCard(InfoCardModel infoCard, int catId) async {
     Database database = await instance.database;
-    return await database.update('infoCard', infoCard.toMap(), where: 'id = ?', whereArgs: [infoCard.id]);
+    return await database.update(
+      'infoCard',
+      infoCard.toMap(),
+      where: 'catId = ?',
+      whereArgs: [catId],
+    );
   }
 }

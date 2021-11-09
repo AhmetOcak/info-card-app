@@ -1,12 +1,15 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
-import 'package:info_card_app/database/database.dart';
+import 'package:info_card_app/models/infocard_model.dart';
 import 'package:info_card_app/screens/edit_my_info_card.dart';
+import 'package:info_card_app/utils/dbhelper.dart';
 
 class MyCard extends StatefulWidget {
-  MyCard({Key? key, required this.cardName, this.text = ''}) : super(key: key);
-  String cardName;
-  String text;
+  const MyCard({Key? key, required this.cardName, required this.catId}) : super(key: key);
+  final String cardName;
+  final int? catId;
 
   @override
   State<MyCard> createState() => _MyCardState();
@@ -19,8 +22,11 @@ class _MyCardState extends State<MyCard> {
       backgroundColor: backgroundColor,
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: textColor,),
-          onPressed: (){
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+            color: textColor,
+          ),
+          onPressed: () {
             Navigator.pop(context);
           },
         ),
@@ -29,10 +35,12 @@ class _MyCardState extends State<MyCard> {
             padding: const EdgeInsets.only(right: 5.0),
             child: IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (builder) => EditInfoCard(cardName: widget.cardName)));
-                setState(() {
-                  
-                });
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (builder) =>
+                            EditInfoCard(cardName: widget.cardName),),);
+                setState(() {});
               },
               icon: const Icon(
                 Icons.mode_edit_outline_outlined,
@@ -60,18 +68,34 @@ class _MyCardState extends State<MyCard> {
                 child: Card(
                   elevation: 10,
                   color: backgroundColor,
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        Database.getData(widget.cardName) == null ? '' : Database.getData(widget.cardName).toString(),
-                        style: const TextStyle(
-                          fontFamily: 'Scheherazade',
-                          fontSize: 30,
-                          color: accentColor,
-                        ),
-                      ),
-                    ),
+                  child: FutureBuilder<List<InfoCardModel>>(
+                    future: DatabaseHelper.instance.getInfoCardList(widget.catId),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<InfoCardModel>> snapshot) {
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: Text('Loading...'),
+                        );
+                      }
+                      return snapshot.data!.isEmpty
+                          ? Center(
+                              child: Text('no data'),
+                            )
+                          : ListView(
+                              children: snapshot.data!.map((infoCard) {
+                                return Center(
+                                  child: Text(
+                                    infoCard.data,
+                                    style: TextStyle(
+                                      fontFamily: 'Scheherazade',
+                                      fontSize: 30,
+                                      color: accentColor,
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                            );
+                    },
                   ),
                 ),
               ),
