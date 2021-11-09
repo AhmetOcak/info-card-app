@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
-import 'package:info_card_app/models/infocard_model.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
 class EditInfoCard extends StatefulWidget {
@@ -30,10 +29,9 @@ class _EditInfoCardState extends State<EditInfoCard> {
           Padding(
             padding: const EdgeInsets.only(right: 5.0),
             child: IconButton(
-              onPressed: () {
-                setState(() async {
-                  // uptade state
-                  
+              onPressed: () async {
+                await DatabaseHelper.instance.uptadeInfoCard(widget.catId!, text);
+                setState(() {
                   Navigator.pop(context);
                 });
               },
@@ -58,7 +56,9 @@ class _EditInfoCardState extends State<EditInfoCard> {
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 onChanged: (val) {
-                  text = val;
+                  setState(() {
+                    text = val;
+                  });
                 },
                 //initialValue: ,
                 textAlignVertical: TextAlignVertical.top,

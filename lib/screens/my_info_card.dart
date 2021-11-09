@@ -39,7 +39,7 @@ class _MyCardState extends State<MyCard> {
                     context,
                     MaterialPageRoute(
                         builder: (builder) =>
-                            EditInfoCard(cardName: widget.cardName),),);
+                            EditInfoCard(cardName: widget.cardName, catId: widget.catId),),);
                 setState(() {});
               },
               icon: const Icon(

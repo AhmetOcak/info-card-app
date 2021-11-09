@@ -111,13 +111,11 @@ class DatabaseHelper {
     );
   }
 
-  Future<int> uptadeInfoCard(InfoCardModel infoCard, int catId) async {
+  Future<int> uptadeInfoCard(int catId, String data) async {
     Database database = await instance.database;
-    return await database.update(
-      'infoCard',
-      infoCard.toMap(),
-      where: 'catId = ?',
-      whereArgs: [catId],
+    return await database.rawUpdate(
+      'UPTADE infoCard SET data = ? WHERE catId = ? ',
+      ['deneme', catId],
     );
   }
 }
