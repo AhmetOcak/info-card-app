@@ -15,7 +15,7 @@ void main() {
         '/home': (context) => const MyApp(),
         '/createCategory': (context) => const CreateCategory(),
         '/infoCards': (context) => InfoCardScreen(),
-        '/createInfoCards': (context) => CreateInfoCard(infoCardList: const [],),
+        '/createInfoCards': (context) => CreateInfoCard(),
         '/editInfoCard': (context) => EditInfoCard(cardName: '',),
         '/myCard': (context) => MyCard(cardName: '',),
       },

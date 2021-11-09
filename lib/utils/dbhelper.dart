@@ -38,11 +38,12 @@ class DatabaseHelper {
     await database.execute('''
         CREATE TABLE infoCard (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
-          catId INTEGER REFERENCES categoryCard(id),
+          catId INTEGER,
           name TEXT,
           data TEXT,
           creatingTime TEXT,
-          creatingDay TEXT
+          creatingDay TEXT,
+          FOREIGN KEY(catId) REFERENCES categoryCard(id)
         )
       ''');
   }

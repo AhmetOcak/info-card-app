@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
-import 'package:info_card_app/components/info_card.dart';
 import 'package:info_card_app/models/infocard_model.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
 class CreateInfoCard extends StatefulWidget {
-  CreateInfoCard({Key? key, required this.infoCardList,}) : super(key: key);
-  List<InfoCard> infoCardList = [];
+  CreateInfoCard({Key? key}) : super(key: key);
 
   @override
   _CreateInfoCardState createState() => _CreateInfoCardState();

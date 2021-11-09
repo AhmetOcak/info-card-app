@@ -6,8 +6,7 @@ import 'package:info_card_app/screens/create_info_card.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
 class InfoCardScreen extends StatefulWidget {
-  InfoCardScreen({Key? key}) : super(key: key);
-  List<InfoCard> infoCardList = [];
+  const InfoCardScreen({Key? key}) : super(key: key);
 
   @override
   State<InfoCardScreen> createState() => _InfoCardScreenState();
@@ -50,11 +49,10 @@ class _InfoCardScreenState extends State<InfoCardScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => CreateInfoCard(infoCardList: widget.infoCardList,))).then((_) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => CreateInfoCard())).then((_) {
             setState(() {
             });
           });
-          // InfoCardScreen sınıfı constructor ı aracılığıyla aldığı listi info kartı oluşturacak olan CreateInfoCard sayfasına gönderiyor
         },
         child: const Icon(Icons.add, color: textColor,),
         backgroundColor: accentColor,
