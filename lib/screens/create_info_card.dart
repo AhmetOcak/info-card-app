@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/models/infocard_model.dart';
+import 'package:info_card_app/time.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
 class CreateInfoCard extends StatefulWidget {
@@ -61,7 +62,7 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
           ),
           ElevatedButton(
             onPressed: () async {
-              await DatabaseHelper.instance.addInfoCard(InfoCardModel(name: _controller.text, data: '', creatingTime: todaysTime(), creatingDay: todaysDate(), catId: widget.catId!,));
+              await DatabaseHelper.instance.addInfoCard(InfoCardModel(name: _controller.text, data: '', creatingTime: CUTime.todaysTime(), creatingDay: CUTime.todaysDate(), catId: widget.catId!,));
               Navigator.pop(context);
             },
             child: const Text(
@@ -78,11 +79,3 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
     );
   }
 }
-
-  String todaysTime() {
-    return DateTime.now().toString().substring(11, 19);
-  }
-
-  String todaysDate() {
-    return DateTime.now().toString().substring(0, 10);
-  }
