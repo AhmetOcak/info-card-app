@@ -7,9 +7,10 @@ import 'package:info_card_app/screens/edit_my_info_card.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
 class MyCard extends StatefulWidget {
-  const MyCard({Key? key, required this.cardName, required this.catId}) : super(key: key);
+  const MyCard({Key? key, required this.cardName, required this.catId, required this.id}) : super(key: key);
   final String cardName;
   final int? catId;
+  final int? id;
 
   @override
   State<MyCard> createState() => _MyCardState();

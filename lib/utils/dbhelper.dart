@@ -37,7 +37,7 @@ class DatabaseHelper {
       ''');
     await database.execute('''
         CREATE TABLE infoCard (
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          id INTEGER PRIMARY KEY,
           catId INTEGER,
           name TEXT,
           data TEXT,
@@ -111,13 +111,13 @@ class DatabaseHelper {
     );
   }
 
-  Future<int> uptadeInfoCard(int id, String data, InfoCardModel infoCardModel) async {
+  Future<int> uptadeInfoCard(String data, InfoCardModel infoCardModel) async {
     Database database = await instance.database;
     return await database.update(
       'infoCard',
       infoCardModel.toMap(),
-      where: '$id = ?',
-      whereArgs: [id], 
+      where: 'id = ?',
+      whereArgs: [infoCardModel.id], 
     );
   }
 }

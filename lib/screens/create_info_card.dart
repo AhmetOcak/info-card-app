@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/models/infocard_model.dart';
+import 'package:info_card_app/random_id.dart';
 import 'package:info_card_app/time.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
 class CreateInfoCard extends StatefulWidget {
-  CreateInfoCard({Key? key, required this.catId}) : super(key: key);
+  const CreateInfoCard({Key? key, required this.catId}) : super(key: key);
   final int? catId;
 
   @override
@@ -62,7 +63,7 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
           ),
           ElevatedButton(
             onPressed: () async {
-              await DatabaseHelper.instance.addInfoCard(InfoCardModel(name: _controller.text, data: '', creatingTime: CUTime.todaysTime(), creatingDay: CUTime.todaysDate(), catId: widget.catId!,));
+              await DatabaseHelper.instance.addInfoCard(InfoCardModel(name: _controller.text, data: '', creatingTime: CUTime.todaysTime(), creatingDay: CUTime.todaysDate(), catId: widget.catId!, id: RandomId.addId()));
               Navigator.pop(context);
             },
             child: const Text(

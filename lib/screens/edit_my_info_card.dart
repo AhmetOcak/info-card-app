@@ -5,10 +5,11 @@ import 'package:info_card_app/time.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
 class EditInfoCard extends StatefulWidget {
-  const EditInfoCard({Key? key, required this.cardName, this.catId,}) : super(key: key);
+  const EditInfoCard({Key? key, required this.cardName, this.catId, this.id}) : super(key: key);
   final String cardName;
   final int? catId;
-  
+  final int? id;
+
   @override
   _EditInfoCardState createState() => _EditInfoCardState();
 }
@@ -32,7 +33,16 @@ class _EditInfoCardState extends State<EditInfoCard> {
             padding: const EdgeInsets.only(right: 5.0),
             child: IconButton(
               onPressed: () async {
-                await DatabaseHelper.instance.uptadeInfoCard(widget.catId!, text, InfoCardModel(catId: widget.catId!, name: widget.cardName, data: text, creatingTime: CUTime.todaysTime(), creatingDay: CUTime.todaysDate()));
+                await DatabaseHelper.instance.uptadeInfoCard(
+                    text,
+                    InfoCardModel(
+                      catId: widget.catId!,
+                      name: widget.cardName,
+                      data: text,
+                      creatingTime: CUTime.todaysTime(),
+                      creatingDay: CUTime.todaysDate(),
+                      id: widget.id!,
+                    ));
                 setState(() {
                   Navigator.pop(context);
                 });

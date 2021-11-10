@@ -17,7 +17,7 @@ class InfoCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width / 1.2,
       child: InkWell(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (builder) => MyCard(cardName: cardName, catId: catId,)));
+          Navigator.push(context, MaterialPageRoute(builder: (builder) => MyCard(cardName: cardName, catId: catId, id: null,)));
         },
         splashColor: Colors.green[100],
         child: Card(
@@ -92,13 +92,5 @@ class InfoCard extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String todaysTime() {
-    return DateTime.now().toString().substring(11, 19);
-  }
-
-  String todaysDate() {
-    return DateTime.now().toString().substring(0, 10);
   }
 }
