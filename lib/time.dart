@@ -4,7 +4,7 @@ class CUTime {
     return DateTime.now().toString().substring(11, 19);
   }
 
-   static String todaysDate() {
+  static String todaysDate() {
     return DateTime.now().toString().substring(0, 10);
   }
 

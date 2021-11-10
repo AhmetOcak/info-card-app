@@ -63,7 +63,16 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
           ),
           ElevatedButton(
             onPressed: () async {
-              await DatabaseHelper.instance.addInfoCard(InfoCardModel(name: _controller.text, data: '', creatingTime: CUTime.todaysTime(), creatingDay: CUTime.todaysDate(), catId: widget.catId!, id: RandomId.addId()));
+              await DatabaseHelper.instance.addInfoCard(InfoCardModel(
+                name: _controller.text,
+                data: '',
+                creatingTime: CUTime.todaysTime(),
+                creatingDay: CUTime.todaysDate(),
+                catId: widget.catId!,
+                id: RandomId.addId(),
+              ));
+              RandomId.currentInfoCardId = RandomId.addId() - 1;
+              print('${RandomId.currentInfoCardId} create');
               Navigator.pop(context);
             },
             child: const Text(

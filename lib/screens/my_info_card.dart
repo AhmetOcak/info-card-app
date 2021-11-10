@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/models/infocard_model.dart';
+import 'package:info_card_app/random_id.dart';
 import 'package:info_card_app/screens/edit_my_info_card.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
@@ -40,7 +41,13 @@ class _MyCardState extends State<MyCard> {
                     context,
                     MaterialPageRoute(
                         builder: (builder) =>
-                            EditInfoCard(cardName: widget.cardName, catId: widget.catId),),);
+                            EditInfoCard(
+                      cardName: widget.cardName,
+                      catId: widget.catId,
+                      id: RandomId.currentInfoCardId,
+                    ),
+                  ),
+                );
                 setState(() {});
               },
               icon: const Icon(

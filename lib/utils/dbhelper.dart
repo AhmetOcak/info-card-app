@@ -1,6 +1,7 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, unused_field
 import 'package:info_card_app/models/category_model.dart';
 import 'package:info_card_app/models/infocard_model.dart';
+import 'package:info_card_app/random_id.dart';
 import 'package:sqflite/sqflite.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
@@ -117,7 +118,7 @@ class DatabaseHelper {
       'infoCard',
       infoCardModel.toMap(),
       where: 'id = ?',
-      whereArgs: [infoCardModel.id], 
+      whereArgs: [RandomId.currentInfoCardId], 
     );
   }
 }

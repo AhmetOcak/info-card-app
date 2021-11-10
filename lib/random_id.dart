@@ -1,12 +1,9 @@
 class RandomId {
-  static int id = 1;
-
+  static int id = 0;
+  static int? currentInfoCardId;
   static int addId() {
-    for(int i = 0; i < id; i ++) {
-      id = i;
-      print(id);
-      return id;
-    }
-    return 999;
+    id = id + 1;
+    print('adddd $id');
+    return id;
   }
 }

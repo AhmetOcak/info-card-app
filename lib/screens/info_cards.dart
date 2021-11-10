@@ -14,7 +14,6 @@ class InfoCardScreen extends StatefulWidget {
 }
 
 class _InfoCardScreenState extends State<InfoCardScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,8 +21,11 @@ class _InfoCardScreenState extends State<InfoCardScreen> {
       appBar: AppBar(
         backgroundColor: accentColor,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: textColor,),
-          onPressed: (){
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+            color: textColor,
+          ),
+          onPressed: () {
             Navigator.pop(context);
           },
         ),
@@ -33,29 +35,49 @@ class _InfoCardScreenState extends State<InfoCardScreen> {
         ),
       ),
       body: Center(
-        child: FutureBuilder<List<InfoCardModel>> (
+        child: FutureBuilder<List<InfoCardModel>>(
           future: DatabaseHelper.instance.getInfoCardList(widget.catId),
-          builder: (BuildContext context, AsyncSnapshot<List<InfoCardModel>> snapshot) {
-            if(!snapshot.hasData) {
-              return const Center(child: Text('Loading'),);
-            }
-            return snapshot.data!.isEmpty ? const Center(child: Text('no data'),) : 
-            ListView(children: snapshot.data!.map((infoCardModel) {
-              return Center(
-                child: InfoCard(cardName: infoCardModel.name, time: infoCardModel.creatingTime, date: infoCardModel.creatingDay, catId: widget.catId,),
+          builder: (BuildContext context,
+              AsyncSnapshot<List<InfoCardModel>> snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(
+                child: Text('Loading'),
               );
-            }).toList(),);
+            }
+            return snapshot.data!.isEmpty
+                ? const Center(
+                    child: Text('no data'),
+                  )
+                : ListView(
+                    children: snapshot.data!.map((infoCardModel) {
+                      return Center(
+                        child: InfoCard(
+                          cardName: infoCardModel.name,
+                          time: infoCardModel.creatingTime,
+                          date: infoCardModel.creatingDay,
+                          catId: widget.catId,
+                        ),
+                      );
+                    }).toList(),
+                  );
           },
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => CreateInfoCard(catId: widget.catId!,))).then((_) {
-            setState(() {
-            });
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => CreateInfoCard(
+                        catId: widget.catId!,
+                      ))).then((_) {
+            setState(() {});
           });
         },
-        child: const Icon(Icons.add, color: textColor,),
+        child: const Icon(
+          Icons.add,
+          color: textColor,
+        ),
         backgroundColor: accentColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

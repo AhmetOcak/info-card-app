@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
+import 'package:info_card_app/random_id.dart';
 import 'package:info_card_app/screens/my_info_card.dart';
 
 class InfoCard extends StatelessWidget {
-  const InfoCard({Key? key, required this.cardName, required this.time, required this.date,  required this.catId}) : super(key: key);
+  InfoCard(
+      {Key? key,
+      required this.cardName,
+      required this.time,
+      required this.date,
+      required this.catId})
+      : super(key: key);
 
   final String cardName;
   final String time;
   final String date;
   final int? catId;
+  final int? id = RandomId.currentInfoCardId;
+  // kartlara tıklandığında id ortak kalıyor
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +26,17 @@ class InfoCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width / 1.2,
       child: InkWell(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (builder) => MyCard(cardName: cardName, catId: catId, id: null,)));
+          print('$id info card comp');
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (builder) => MyCard(
+                cardName: cardName,
+                catId: catId,
+                id: id,
+              ),
+            ),
+          );
         },
         splashColor: Colors.green[100],
         child: Card(
@@ -34,17 +53,16 @@ class InfoCard extends StatelessWidget {
                     child: Text(
                       cardName,
                       style: const TextStyle(
-                          fontFamily: 'Scheherazade',
-                          fontSize: 35,
-                          color: textColor,
-                        ),
+                        fontFamily: 'Scheherazade',
+                        fontSize: 35,
+                        color: textColor,
+                      ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: IconButton(
-                      onPressed: () {
-                      },
+                      onPressed: () {},
                       icon: const Icon(
                         Icons.close,
                         color: textColor,
