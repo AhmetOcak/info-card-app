@@ -68,6 +68,16 @@ class DatabaseHelper {
     return infoCardList;
   }
 
+    Future<List<InfoCardModel>> getInfoCardData(int? id) async {
+    Database database = await instance.database;
+    var infoCards = await database.query('infoCard',
+        orderBy: 'name', where: 'id = ?', whereArgs: [id]);
+    List<InfoCardModel> infoCardList = infoCards.isNotEmpty
+        ? infoCards.map((e) => InfoCardModel.fromMap(e)).toList()
+        : [];
+    return infoCardList;
+  }
+
   Future<int> addCategoryCard(Category category) async {
     Database database = await instance.database;
     return await database.insert(
@@ -118,7 +128,7 @@ class DatabaseHelper {
       'infoCard',
       infoCardModel.toMap(),
       where: 'id = ?',
-      whereArgs: [RandomId.currentInfoCardId], 
+      whereArgs: [infoCardModel.id], 
     );
   }
 }

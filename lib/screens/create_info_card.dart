@@ -72,7 +72,6 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
                 id: RandomId.addId(),
               ));
               RandomId.currentInfoCardId = RandomId.addId() - 1;
-              print('${RandomId.currentInfoCardId} create');
               Navigator.pop(context);
             },
             child: const Text(

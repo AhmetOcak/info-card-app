@@ -5,17 +5,16 @@ import 'package:info_card_app/time.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
 class EditInfoCard extends StatefulWidget {
-  const EditInfoCard({Key? key, required this.cardName, this.catId, this.id}) : super(key: key);
+  EditInfoCard({Key? key, required this.cardName, this.catId, this.id, this.data}) : super(key: key);
   final String cardName;
   final int? catId;
   final int? id;
-
+  String? data;
   @override
   _EditInfoCardState createState() => _EditInfoCardState();
 }
 
 class _EditInfoCardState extends State<EditInfoCard> {
-  String text = '';
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +33,11 @@ class _EditInfoCardState extends State<EditInfoCard> {
             child: IconButton(
               onPressed: () async {
                 await DatabaseHelper.instance.uptadeInfoCard(
-                    text,
+                    widget.data!,
                     InfoCardModel(
                       catId: widget.catId!,
                       name: widget.cardName,
-                      data: text,
+                      data: widget.data!,
                       creatingTime: CUTime.todaysTime(),
                       creatingDay: CUTime.todaysDate(),
                       id: widget.id!,
@@ -69,7 +68,7 @@ class _EditInfoCardState extends State<EditInfoCard> {
               child: TextFormField(
                 onChanged: (val) {
                   setState(() {
-                    text = val;
+                    widget.data = val;
                   });
                 },
                 //initialValue: ,

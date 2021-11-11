@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
-import 'package:info_card_app/random_id.dart';
 import 'package:info_card_app/screens/my_info_card.dart';
 
 class InfoCard extends StatelessWidget {
-  InfoCard(
+  const InfoCard(
       {Key? key,
       required this.cardName,
       required this.time,
       required this.date,
-      required this.catId})
+      required this.catId,
+      required this.id,
+      required this.data})
       : super(key: key);
 
   final String cardName;
   final String time;
   final String date;
+  final String data;
   final int? catId;
-  final int? id = RandomId.currentInfoCardId;
+  final int? id;
   // kartlara tıklandığında id ortak kalıyor
 
   @override
@@ -26,7 +28,6 @@ class InfoCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width / 1.2,
       child: InkWell(
         onTap: () {
-          print('$id info card comp');
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -34,6 +35,7 @@ class InfoCard extends StatelessWidget {
                 cardName: cardName,
                 catId: catId,
                 id: id,
+                data: data,
               ),
             ),
           );
@@ -101,7 +103,7 @@ class InfoCard extends StatelessWidget {
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),

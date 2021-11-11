@@ -3,7 +3,6 @@ class RandomId {
   static int? currentInfoCardId;
   static int addId() {
     id = id + 1;
-    print('adddd $id');
     return id;
   }
 }

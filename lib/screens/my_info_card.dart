@@ -3,15 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/models/infocard_model.dart';
-import 'package:info_card_app/random_id.dart';
 import 'package:info_card_app/screens/edit_my_info_card.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
 class MyCard extends StatefulWidget {
-  const MyCard({Key? key, required this.cardName, required this.catId, required this.id}) : super(key: key);
+  const MyCard({Key? key, required this.cardName, required this.catId, required this.id, required this.data}) : super(key: key);
   final String cardName;
   final int? catId;
   final int? id;
+  final String data;
 
   @override
   State<MyCard> createState() => _MyCardState();
@@ -44,7 +44,7 @@ class _MyCardState extends State<MyCard> {
                             EditInfoCard(
                       cardName: widget.cardName,
                       catId: widget.catId,
-                      id: RandomId.currentInfoCardId,
+                      id: widget.id,
                     ),
                   ),
                 );
@@ -77,7 +77,7 @@ class _MyCardState extends State<MyCard> {
                   elevation: 10,
                   color: backgroundColor,
                   child: FutureBuilder<List<InfoCardModel>>(
-                    future: DatabaseHelper.instance.getInfoCardList(widget.catId),
+                    future: DatabaseHelper.instance.getInfoCardData(widget.id),
                     builder: (BuildContext context,
                         AsyncSnapshot<List<InfoCardModel>> snapshot) {
                       if (!snapshot.hasData) {
