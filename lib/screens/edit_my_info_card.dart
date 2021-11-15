@@ -71,7 +71,7 @@ class _EditInfoCardState extends State<EditInfoCard> {
                     widget.data = val;
                   });
                 },
-                //initialValue: ,
+                initialValue: widget.data,
                 textAlignVertical: TextAlignVertical.top,
                 cursorColor: accentColor,
                 style: const TextStyle(color: accentColor, fontSize: 30),
