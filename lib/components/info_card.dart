@@ -19,7 +19,6 @@ class InfoCard extends StatelessWidget {
   final String data;
   final int? catId;
   final int? id;
-  // kartlara tıklandığında id ortak kalıyor
 
   @override
   Widget build(BuildContext context) {
