@@ -58,7 +58,8 @@ class _MyCardState extends State<MyCard> {
             ),
           ),
         ],
-        backgroundColor: accentColor,
+        backgroundColor: backgroundColor,
+        elevation: 0,
         title: Text(
           widget.cardName,
           style: myStyle,
@@ -97,7 +98,7 @@ class _MyCardState extends State<MyCard> {
                                     style: TextStyle(
                                       fontFamily: 'Scheherazade',
                                       fontSize: 30,
-                                      color: accentColor,
+                                      color: textColor,
                                     ),
                                   ),
                                 );

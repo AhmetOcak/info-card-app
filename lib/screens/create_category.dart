@@ -24,7 +24,8 @@ class _CreateCategoryState extends State<CreateCategory> {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: accentColor,
+        backgroundColor: backgroundColor,
+        elevation: 0,
         title: const Text(
           'Create Category',
           style: myStyle,
@@ -79,7 +80,7 @@ class _CreateCategoryState extends State<CreateCategory> {
             ),
             style: ButtonStyle(
               elevation: MaterialStateProperty.all(10),
-              backgroundColor: MaterialStateProperty.all(accentColor),
+              backgroundColor: MaterialStateProperty.all(buttonColor),
             ),
           ),
         ],

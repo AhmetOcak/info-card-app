@@ -5,7 +5,9 @@ import 'package:info_card_app/time.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
 class EditInfoCard extends StatefulWidget {
-  EditInfoCard({Key? key, required this.cardName, this.catId, this.id, this.data}) : super(key: key);
+  EditInfoCard(
+      {Key? key, required this.cardName, this.catId, this.id, this.data})
+      : super(key: key);
   final String cardName;
   final int? catId;
   final int? id;
@@ -15,6 +17,10 @@ class EditInfoCard extends StatefulWidget {
 }
 
 class _EditInfoCardState extends State<EditInfoCard> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +28,11 @@ class _EditInfoCardState extends State<EditInfoCard> {
       backgroundColor: backgroundColor,
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: textColor,),
-          onPressed: (){
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+            color: textColor,
+          ),
+          onPressed: () {
             Navigator.pop(context);
           },
         ),
@@ -54,7 +63,8 @@ class _EditInfoCardState extends State<EditInfoCard> {
             ),
           ),
         ],
-        backgroundColor: accentColor,
+        backgroundColor: backgroundColor,
+        elevation: 0,
         title: Text(
           widget.cardName,
           style: myStyle,

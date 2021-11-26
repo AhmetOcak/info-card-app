@@ -18,7 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: accentColor,
+        backgroundColor: backgroundColor,
+        elevation: 0,
         title: const Text(
           'InfoCard',
           style: myStyle,
@@ -52,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Icons.add,
           color: textColor,
         ),
-        backgroundColor: accentColor,
+        backgroundColor: floatactionButtonColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

@@ -19,7 +19,8 @@ class _InfoCardScreenState extends State<InfoCardScreen> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: accentColor,
+        backgroundColor: backgroundColor,
+        elevation: 0,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios_new,
@@ -80,7 +81,7 @@ class _InfoCardScreenState extends State<InfoCardScreen> {
           Icons.add,
           color: textColor,
         ),
-        backgroundColor: accentColor,
+        backgroundColor: floatactionButtonColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
