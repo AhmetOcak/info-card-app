@@ -7,6 +7,7 @@ const TextStyle myStyle = TextStyle(
   color: textColor,
 );
 
+
 const Color cardColor = Color(0xFF6B2D5C);
 const Color backgroundColor = Color(0xFF011C27);
 const Color accentColor = Color(0xFF1B4B5A);
