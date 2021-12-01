@@ -66,7 +66,7 @@ class _EditInfoCardState extends State<EditInfoCard> {
         backgroundColor: backgroundColor,
         elevation: 0,
         title: Text(
-          widget.cardName,
+          "editing ${widget.cardName}",
           style: myStyle,
         ),
       ),
@@ -83,12 +83,14 @@ class _EditInfoCardState extends State<EditInfoCard> {
                 },
                 initialValue: widget.data,
                 textAlignVertical: TextAlignVertical.top,
-                cursorColor: accentColor,
-                style: const TextStyle(color: accentColor, fontSize: 30),
+                cursorColor: backgroundColor,
+                style: myStyle.copyWith(
+                  color: cardColor,
+                ),
                 decoration: const InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: accentColor,
+                      color: cardColor,
                       width: 2,
                     ),
                     borderRadius: BorderRadius.all(
@@ -97,7 +99,7 @@ class _EditInfoCardState extends State<EditInfoCard> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: accentColor,
+                      color: cardColor,
                       width: 2,
                     ),
                     borderRadius: BorderRadius.all(

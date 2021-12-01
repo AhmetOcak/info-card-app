@@ -39,38 +39,33 @@ class InfoCard extends StatelessWidget {
             ),
           );
         },
-        splashColor: Colors.green[100],
+        splashColor: cardColor,
         child: Card(
           elevation: 5,
+          shadowColor: cardColor,
           color: cardColor,
-          margin: const EdgeInsets.all(15),
+          margin: EdgeInsets.all(MediaQuery.of(context).size.width / 40),
           child: Column(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 40),
-                    child: Text(
-                      cardName,
-                      style: const TextStyle(
-                        fontFamily: 'Scheherazade',
-                        fontSize: 35,
-                        color: textColor,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.close,
-                        color: textColor,
-                      ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.delete_forever,
+                      color: Colors.red,
                     ),
                   ),
                 ],
+              ),
+              Text(
+                cardName,
+                style: const TextStyle(
+                  fontFamily: 'Scheherazade',
+                  fontSize: 35,
+                  color: textColor,
+                ),
               ),
               Expanded(
                 child: Row(
@@ -80,24 +75,24 @@ class InfoCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 10),
+                          padding: EdgeInsets.only(
+                            right: (MediaQuery.of(context).size.width / 100),
+                          ),
                           child: Text(
                             time,
-                            style: const TextStyle(
-                              fontFamily: 'Scheherazade',
+                            style: myStyle.copyWith(
                               fontSize: 20,
-                              color: textColor,
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 10),
+                          padding: EdgeInsets.only(
+                            right: (MediaQuery.of(context).size.width / 100),
+                          ),
                           child: Text(
                             date,
-                            style: const TextStyle(
-                              fontFamily: 'Scheherazade',
+                            style: myStyle.copyWith(
                               fontSize: 20,
-                              color: textColor,
                             ),
                           ),
                         ),

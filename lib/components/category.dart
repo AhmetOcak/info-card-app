@@ -23,13 +23,14 @@ class CategoryCard extends StatelessWidget {
             ),
           );
         },
-        splashColor: Colors.green[100],
+        splashColor: cardColor,
         child: Card(
           elevation: 5,
+          shadowColor: cardColor,
           color: cardColor,
-          margin: const EdgeInsets.all(10),
+          margin: EdgeInsets.all(MediaQuery.of(context).size.width / 40),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -39,18 +40,16 @@ class CategoryCard extends StatelessWidget {
                       await DatabaseHelper.instance.removeCategoryCard(id!);
                     },
                     icon: const Icon(
-                      Icons.close,
-                      color: textColor,
+                      Icons.delete_forever,
+                      color: Colors.red,
                     ),
                   ),
                 ],
               ),
               Text(
                 categoryName,
-                style: const TextStyle(
-                  fontFamily: 'Scheherazade',
+                style: myStyle.copyWith(
                   fontSize: 55,
-                  color: textColor,
                 ),
               ),
             ],

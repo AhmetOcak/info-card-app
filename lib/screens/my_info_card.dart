@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/models/infocard_model.dart';
@@ -76,18 +74,18 @@ class _MyCardState extends State<MyCard> {
                 margin: const EdgeInsets.all(10.0),
                 child: Card(
                   elevation: 10,
-                  color: backgroundColor,
+                  color: cardColor,
                   child: FutureBuilder<List<InfoCardModel>>(
                     future: DatabaseHelper.instance.getInfoCardData(widget.id),
                     builder: (BuildContext context,
                         AsyncSnapshot<List<InfoCardModel>> snapshot) {
                       if (!snapshot.hasData) {
-                        return Center(
+                        return const Center(
                           child: Text('Loading...'),
                         );
                       }
                       return snapshot.data!.isEmpty
-                          ? Center(
+                          ? const Center(
                               child: Text('no data'),
                             )
                           : ListView(
@@ -95,11 +93,7 @@ class _MyCardState extends State<MyCard> {
                                 return Center(
                                   child: Text(
                                     infoCard.data,
-                                    style: TextStyle(
-                                      fontFamily: 'Scheherazade',
-                                      fontSize: 30,
-                                      color: textColor,
-                                    ),
+                                    style: myStyle,
                                   ),
                                 );
                               }).toList(),
