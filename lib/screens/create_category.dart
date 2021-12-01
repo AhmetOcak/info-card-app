@@ -3,14 +3,7 @@ import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/models/cards_data.dart';
 import 'package:provider/provider.dart';
 
-class CreateCategory extends StatefulWidget {
-  const CreateCategory({Key? key}) : super(key: key);
-
-  @override
-  _CreateCategoryState createState() => _CreateCategoryState();
-}
-
-class _CreateCategoryState extends State<CreateCategory> {
+class CreateCategory extends StatelessWidget {
   String cardName = '';
 
   @override

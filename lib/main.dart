@@ -17,7 +17,7 @@ void main() {
         initialRoute: '/home',
         routes: {
           '/home': (context) => const MyApp(),
-          '/createCategory': (context) => const CreateCategory(),
+          '/createCategory': (context) => CreateCategory(),
           '/infoCards': (context) => const  InfoCardScreen(catId: null,),
           '/createInfoCards': (context) => CreateInfoCard(catId: null,),
           '/editInfoCard': (context) => EditInfoCard(cardName: '',),
