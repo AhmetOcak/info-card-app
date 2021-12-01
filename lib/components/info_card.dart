@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
+import 'package:info_card_app/models/cards_data.dart';
 import 'package:info_card_app/screens/my_info_card.dart';
+import 'package:provider/provider.dart';
 
 class InfoCard extends StatelessWidget {
   const InfoCard(
@@ -18,7 +20,7 @@ class InfoCard extends StatelessWidget {
   final String date;
   final String data;
   final int? catId;
-  final int? id;
+  final int id;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +53,9 @@ class InfoCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Provider.of<CardsData>(context, listen: false).deleteInfoCard(id);
+                    },
                     icon: const Icon(
                       Icons.delete_forever,
                       color: Colors.red,

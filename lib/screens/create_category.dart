@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/models/cards_data.dart';
-import 'package:info_card_app/models/category_model.dart';
-import 'package:info_card_app/utils/dbhelper.dart';
 import 'package:provider/provider.dart';
 
 class CreateCategory extends StatefulWidget {

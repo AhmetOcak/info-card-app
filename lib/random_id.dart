@@ -1,4 +1,4 @@
-class RandomId {
+class GiveID {
   static int id = 0;
   static int? currentInfoCardId;
   static int addId() {

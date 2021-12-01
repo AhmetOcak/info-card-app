@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
+import 'package:info_card_app/models/cards_data.dart';
 import 'package:info_card_app/screens/info_cards.dart';
-import 'package:info_card_app/utils/dbhelper.dart';
+import 'package:provider/provider.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({Key? key, required this.categoryName, this.id}) : super(key: key);
@@ -36,8 +37,8 @@ class CategoryCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    onPressed: () async {
-                      await DatabaseHelper.instance.removeCategoryCard(id!);
+                    onPressed: () {
+                      Provider.of<CardsData>(context, listen: false).deleteCategoryCard(id);
                     },
                     icon: const Icon(
                       Icons.delete_forever,

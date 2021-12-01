@@ -19,7 +19,7 @@ void main() {
           '/home': (context) => const MyApp(),
           '/createCategory': (context) => const CreateCategory(),
           '/infoCards': (context) => const  InfoCardScreen(catId: null,),
-          '/createInfoCards': (context) => const CreateInfoCard(catId: null,),
+          '/createInfoCards': (context) => CreateInfoCard(catId: null,),
           '/editInfoCard': (context) => EditInfoCard(cardName: '',),
           '/myCard': (context) => const MyCard(cardName: '', catId: null, id: null, data: '',),
         },
@@ -34,6 +34,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const HomeScreen();
+    return HomeScreen();
   }
 }
