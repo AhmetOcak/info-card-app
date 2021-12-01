@@ -71,35 +71,40 @@ class _MyCardState extends State<MyCard> {
               child: Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.all(10.0),
-                child: Card(
-                  elevation: 10,
-                  color: cardColor,
-                  child: FutureBuilder<List<InfoCardModel>>(
-                    future: DatabaseHelper.instance.getInfoCardData(widget.id),
-                    builder: (BuildContext context,
-                        AsyncSnapshot<List<InfoCardModel>> snapshot) {
-                      if (!snapshot.hasData) {
-                        return const Center(
-                          child: Text('Loading...'),
-                        );
-                      }
-                      return snapshot.data!.isEmpty
-                          ? const Center(
-                              child: Text('no data'),
-                            )
-                          : ListView(
-                              children: snapshot.data!.map((infoCard) {
-                                return Center(
-                                  child: Text(
-                                    infoCard.data,
-                                    style: myStyle,
-                                  ),
-                                );
-                              }).toList(),
-                            );
-                    },
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(color: cardColor, style: BorderStyle.solid, width: 2),
+                    top: BorderSide(color: cardColor, style: BorderStyle.solid, width: 2),
+                    left: BorderSide(color: cardColor, style: BorderStyle.solid, width: 2),
+                    right: BorderSide(color: cardColor, style: BorderStyle.solid, width: 2),
                   ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                margin: const EdgeInsets.all(10.0),
+                child: FutureBuilder<List<InfoCardModel>>(
+                  future: DatabaseHelper.instance.getInfoCardData(widget.id),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<InfoCardModel>> snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: Text('Loading...'),
+                      );
+                    }
+                    return snapshot.data!.isEmpty
+                        ? const Center(
+                            child: Text('no data'),
+                          )
+                        : ListView(
+                            children: snapshot.data!.map((infoCard) {
+                              return Center(
+                                child: Text(
+                                  infoCard.data,
+                                  style: myStyle,
+                                ),
+                              );
+                            }).toList(),
+                          );
+                  },
                 ),
               ),
             ),

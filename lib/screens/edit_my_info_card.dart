@@ -74,7 +74,7 @@ class _EditInfoCardState extends State<EditInfoCard> {
         children: [
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(18.0),
               child: TextFormField(
                 onChanged: (val) {
                   setState(() {
@@ -83,9 +83,9 @@ class _EditInfoCardState extends State<EditInfoCard> {
                 },
                 initialValue: widget.data,
                 textAlignVertical: TextAlignVertical.top,
-                cursorColor: backgroundColor,
+                cursorColor: cardColor,
                 style: myStyle.copyWith(
-                  color: cardColor,
+                  color: textColor,
                 ),
                 decoration: const InputDecoration(
                   enabledBorder: OutlineInputBorder(
