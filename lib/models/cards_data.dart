@@ -38,7 +38,6 @@ class CardsData extends ChangeNotifier {
     );
   }
 
-
   void addCategoryCard(String cardName) async {
     await DatabaseHelper.instance.addCategoryCard(
       Category(name: cardName),
@@ -51,6 +50,9 @@ class CardsData extends ChangeNotifier {
     notifyListeners();
   }
   // CATEGORY CARDS
+
+
+
 
   // INFO CARD
   FutureBuilder<List<InfoCardModel>> getInfoCard(int? categoryId) {

@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
           Icons.add,
           color: textColor,
         ),
-        backgroundColor: floatactionButtonColor,
+        backgroundColor: buttonColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
