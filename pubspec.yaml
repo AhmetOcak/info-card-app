@@ -77,9 +77,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: SourceSansPro
+    - family: ScheherazadeNew
       fonts:
-        - asset: assets/fonts/SourceSansPro-Light.ttf
+        - asset: assets/fonts/ScheherazadeNew-Regular.ttf
 
   #
   # For details regarding fonts from package dependencies,
