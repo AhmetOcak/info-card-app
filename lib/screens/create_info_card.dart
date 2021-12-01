@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
-import 'package:info_card_app/models/infocard_model.dart';
+import 'package:info_card_app/models/cards_data.dart';
 import 'package:info_card_app/random_id.dart';
-import 'package:info_card_app/time.dart';
-import 'package:info_card_app/utils/dbhelper.dart';
+import 'package:provider/provider.dart';
 
-class CreateInfoCard extends StatefulWidget {
-  const CreateInfoCard({Key? key, required this.catId}) : super(key: key);
+class CreateInfoCard extends StatelessWidget {
+  CreateInfoCard({Key? key, required this.catId}) : super(key: key);
+  
   final int? catId;
-
-  @override
-  _CreateInfoCardState createState() => _CreateInfoCardState();
-}
-
-class _CreateInfoCardState extends State<CreateInfoCard> {
-  final TextEditingController _controller = TextEditingController();
+  String cardName = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: accentColor,
+        backgroundColor: backgroundColor,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new, color: textColor,),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
         title: const Text(
           'Create Info Card',
           style: myStyle,
         ),
+        elevation: 0,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +34,9 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
           Padding(
             padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
             child: TextField(
-              controller: _controller,
+              onChanged: (val) {
+                cardName = val;
+              },
               cursorColor: accentColor,
               style: myStyle,
               decoration: const InputDecoration(
@@ -63,15 +66,8 @@ class _CreateInfoCardState extends State<CreateInfoCard> {
           ),
           ElevatedButton(
             onPressed: () async {
-              await DatabaseHelper.instance.addInfoCard(InfoCardModel(
-                name: _controller.text,
-                data: '',
-                creatingTime: CUTime.todaysTime(),
-                creatingDay: CUTime.todaysDate(),
-                catId: widget.catId!,
-                id: RandomId.addId(),
-              ));
-              RandomId.currentInfoCardId = RandomId.addId() - 1;
+              Provider.of<CardsData>(context, listen: false).addInfoCard(cardName, catId);
+              GiveID.currentInfoCardId = GiveID.addId() - 1;
               Navigator.pop(context);
             },
             child: const Text(
