@@ -25,7 +25,7 @@ class InfoCardScreen extends StatelessWidget {
           },
         ),
         title: const Text(
-          'My Info Cards',
+          'Info Cards',
           style: myStyle,
         ),
       ),

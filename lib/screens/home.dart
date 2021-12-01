@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: backgroundColor,
         elevation: 0,
         title: const Text(
-          'InfoCard',
+          'Category Cards',
           style: myStyle,
         ),
       ),
