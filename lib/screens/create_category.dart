@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
+import 'package:info_card_app/models/cards_data.dart';
 import 'package:info_card_app/models/category_model.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
+import 'package:provider/provider.dart';
 
 class CreateCategory extends StatefulWidget {
   const CreateCategory({Key? key}) : super(key: key);
@@ -11,7 +13,7 @@ class CreateCategory extends StatefulWidget {
 }
 
 class _CreateCategoryState extends State<CreateCategory> {
-  final TextEditingController _controller = TextEditingController();
+  String cardName = '';
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,9 @@ class _CreateCategoryState extends State<CreateCategory> {
           Padding(
             padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
             child: TextField(
-              controller: _controller,
+              onChanged: (val) {
+                cardName = val;
+              },
               style: myStyle,
               cursorColor: accentColor,
               decoration: const InputDecoration(
@@ -68,11 +72,8 @@ class _CreateCategoryState extends State<CreateCategory> {
           ElevatedButton(
             onPressed: () async {
               FocusScope.of(context).unfocus();
-              await DatabaseHelper.instance.addCategoryCard(Category(name: _controller.text));
+              Provider.of<CardsData>(context, listen: false).addCategoryCard(cardName);
               Navigator.pop(context);
-              setState(() {
-                _controller.clear();
-              });
             },
             child: const Text(
               'Create',

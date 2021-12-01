@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:info_card_app/components/category.dart';
 import 'package:info_card_app/constants.dart';
-import 'package:info_card_app/models/category_model.dart';
-import 'package:info_card_app/utils/dbhelper.dart';
+import 'package:info_card_app/models/cards_data.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -26,28 +25,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: Center(
-        child: FutureBuilder<List<Category>>(
-          future: DatabaseHelper.instance.getCategoryList(),
-          builder: (BuildContext context, AsyncSnapshot<List<Category>> snapshot) {
-            if(!snapshot.hasData) {
-              return const Center(child: Text('Loading ..'),);
-            }
-            return snapshot.data!.isEmpty ? const Center(child: Text('no data'),) : 
-            ListView(children: snapshot.data!.map((category) {
-              return Center(
-                child: CategoryCard(categoryName: category.name, id: category.id,),
-              );
-            }).toList(),);
-          },
-        ),
+        child: Provider.of<CardsData>(context).getCategoryList(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/createCategory').then((_) {
-            setState(() {
-              
-            });
-          });
+          Navigator.pushNamed(context, '/createCategory');
         },
         child: const Icon(
           Icons.add,
