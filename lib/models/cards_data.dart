@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:info_card_app/components/category.dart';
 import 'package:info_card_app/components/info_card.dart';
+import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/models/category_model.dart';
 import 'package:info_card_app/models/infocard_model.dart';
 import 'package:info_card_app/random_id.dart';
@@ -19,8 +21,8 @@ class CardsData extends ChangeNotifier {
           );
         }
         return snapshot.data!.isEmpty
-            ? const Center(
-                child: Text('no data'),
+            ? Center(
+                child: emptyCardWarning(context, "You don't have any category cards."),
               )
             : ListView(
                 children: snapshot.data!.map((category) {
@@ -36,19 +38,19 @@ class CardsData extends ChangeNotifier {
     );
   }
 
+
   void addCategoryCard(String cardName) async {
     await DatabaseHelper.instance.addCategoryCard(
       Category(name: cardName),
     );
     notifyListeners();
   }
-  // CATEGORY CARDS
 
   void deleteCategoryCard(int? id) async {
     await DatabaseHelper.instance.removeCategoryCard(id!);
     notifyListeners();
   }
-
+  // CATEGORY CARDS
 
   // INFO CARD
   FutureBuilder<List<InfoCardModel>> getInfoCard(int? categoryId) {
@@ -62,8 +64,8 @@ class CardsData extends ChangeNotifier {
           );
         }
         return snapshot.data!.isEmpty
-            ? const Center(
-                child: Text('no data'),
+            ? Center(
+                child: emptyCardWarning(context, "You don't have any info cards."),
               )
             : ListView(
                 children: snapshot.data!.map((infoCardModel) {
