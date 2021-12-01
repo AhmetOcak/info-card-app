@@ -43,7 +43,7 @@ class DatabaseHelper {
           data TEXT,
           creatingTime TEXT,
           creatingDay TEXT,
-          FOREIGN KEY(catId) REFERENCES categoryCard(id)
+          FOREIGN KEY(catId) REFERENCES categoryCard(id) ON DELETE CASCADE
         )
       ''');
   }
