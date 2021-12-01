@@ -41,14 +41,14 @@ class _CreateCategoryState extends State<CreateCategory> {
                 cardName = val;
               },
               style: myStyle,
-              cursorColor: accentColor,
+              cursorColor: buttonColor,
               decoration: const InputDecoration(
                 filled: true,
                 hintText: 'Enter category name',
                 hintStyle: myStyle,
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: accentColor,
+                    color: cardColor,
                     width: 2,
                   ),
                   borderRadius: BorderRadius.all(
@@ -57,7 +57,7 @@ class _CreateCategoryState extends State<CreateCategory> {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: accentColor,
+                    color: cardColor,
                     width: 2,
                   ),
                   borderRadius: BorderRadius.all(

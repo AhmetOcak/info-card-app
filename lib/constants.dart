@@ -12,5 +12,5 @@ const Color cardColor = Color(0xFF0A1045);
 const Color backgroundColor = Color(0xFF00C2D1);
 const Color accentColor = Color(0xFFF9E900);
 const Color textColor = Color(0xFFEAFFDA);
-const Color buttonColor = Color(0xFF545677);
+const Color buttonColor = Color(0xFFFF570A);
 const Color floatactionButtonColor = Color(0xFFFF570A);
