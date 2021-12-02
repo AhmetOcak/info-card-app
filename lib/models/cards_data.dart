@@ -22,7 +22,8 @@ class CardsData extends ChangeNotifier {
         }
         return snapshot.data!.isEmpty
             ? Center(
-                child: emptyCardWarning(context, "You don't have any category cards."),
+                child: emptyCardWarning(
+                    context, "You don't have any category cards."),
               )
             : ListView(
                 children: snapshot.data!.map((category) {
@@ -51,9 +52,6 @@ class CardsData extends ChangeNotifier {
   }
   // CATEGORY CARDS
 
-
-
-
   // INFO CARD
   FutureBuilder<List<InfoCardModel>> getInfoCard(int? categoryId) {
     return FutureBuilder<List<InfoCardModel>>(
@@ -67,7 +65,8 @@ class CardsData extends ChangeNotifier {
         }
         return snapshot.data!.isEmpty
             ? Center(
-                child: emptyCardWarning(context, "You don't have any info cards."),
+                child:
+                    emptyCardWarning(context, "You don't have any info cards."),
               )
             : ListView(
                 children: snapshot.data!.map((infoCardModel) {
@@ -104,4 +103,51 @@ class CardsData extends ChangeNotifier {
     notifyListeners();
   }
   // INFO CARDS
+
+  // INFO CARDS DATA
+  FutureBuilder<List<InfoCardModel>> getInfoCardData(int? id) {
+    return FutureBuilder<List<InfoCardModel>>(
+      future: DatabaseHelper.instance.getInfoCardData(id),
+      builder:
+          (BuildContext context, AsyncSnapshot<List<InfoCardModel>> snapshot) {
+        if (!snapshot.hasData) {
+          return const Center(
+            child: Text('Loading...'),
+          );
+        }
+        return snapshot.data!.isEmpty
+            ? const Center(
+                child: Text('no data'),
+              )
+            : ListView(
+                children: snapshot.data!.map((infoCard) {
+                  return Center(
+                    child: Text(
+                      infoCard.data,
+                      style: myStyle,
+                    ),
+                  );
+                }).toList(),
+              );
+      },
+    );
+  }
+
+  void uptadeInfoCardData(
+      String data, int? categoryId, String cardName, int? infoCardId) async {
+    await DatabaseHelper.instance.uptadeInfoCard(
+      data,
+      InfoCardModel(
+        catId: categoryId!,
+        name: cardName,
+        data: data,
+        creatingTime: CUTime.todaysTime(),
+        creatingDay: CUTime.todaysDate(),
+        id: infoCardId!,
+      ),
+    );
+    notifyListeners();
+  }
+
+  // INFO CARDS DATA
 }

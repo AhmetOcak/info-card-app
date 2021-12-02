@@ -1,26 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
-import 'package:info_card_app/models/infocard_model.dart';
-import 'package:info_card_app/time.dart';
-import 'package:info_card_app/utils/dbhelper.dart';
+import 'package:info_card_app/models/cards_data.dart';
+import 'package:provider/provider.dart';
 
-class EditInfoCard extends StatefulWidget {
-  EditInfoCard(
-      {Key? key, required this.cardName, this.catId, this.id, this.data})
+class EditInfoCard extends StatelessWidget {
+  EditInfoCard({Key? key, required this.cardName, this.catId, this.id})
       : super(key: key);
   final String cardName;
   final int? catId;
   final int? id;
-  String? data;
-  @override
-  _EditInfoCardState createState() => _EditInfoCardState();
-}
 
-class _EditInfoCardState extends State<EditInfoCard> {
-  @override
-  void initState() {
-    super.initState();
-  }
+  String data = "";
 
   @override
   Widget build(BuildContext context) {
@@ -40,20 +30,9 @@ class _EditInfoCardState extends State<EditInfoCard> {
           Padding(
             padding: const EdgeInsets.only(right: 5.0),
             child: IconButton(
-              onPressed: () async {
-                await DatabaseHelper.instance.uptadeInfoCard(
-                    widget.data!,
-                    InfoCardModel(
-                      catId: widget.catId!,
-                      name: widget.cardName,
-                      data: widget.data!,
-                      creatingTime: CUTime.todaysTime(),
-                      creatingDay: CUTime.todaysDate(),
-                      id: widget.id!,
-                    ));
-                setState(() {
-                  Navigator.pop(context);
-                });
+              onPressed: ()  {
+                Provider.of<CardsData>(context, listen: false).uptadeInfoCardData(data, catId, cardName, id);
+                Navigator.pop(context);
               },
               icon: const Icon(
                 Icons.check,
@@ -66,7 +45,7 @@ class _EditInfoCardState extends State<EditInfoCard> {
         backgroundColor: backgroundColor,
         elevation: 0,
         title: Text(
-          "editing ${widget.cardName}",
+          "editing $cardName",
           style: myStyle,
         ),
       ),
@@ -77,11 +56,9 @@ class _EditInfoCardState extends State<EditInfoCard> {
               padding: const EdgeInsets.all(18.0),
               child: TextFormField(
                 onChanged: (val) {
-                  setState(() {
-                    widget.data = val;
-                  });
+                    data = val;
                 },
-                initialValue: widget.data,
+                initialValue: "",
                 textAlignVertical: TextAlignVertical.top,
                 cursorColor: cardColor,
                 style: myStyle.copyWith(
@@ -117,3 +94,5 @@ class _EditInfoCardState extends State<EditInfoCard> {
     );
   }
 }
+
+

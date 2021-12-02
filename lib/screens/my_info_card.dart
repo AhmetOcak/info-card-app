@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
-import 'package:info_card_app/models/infocard_model.dart';
+import 'package:info_card_app/models/cards_data.dart';
 import 'package:info_card_app/screens/edit_my_info_card.dart';
-import 'package:info_card_app/utils/dbhelper.dart';
+import 'package:provider/provider.dart';
 
-class MyCard extends StatefulWidget {
+class MyCard extends StatelessWidget {
   const MyCard({Key? key, required this.cardName, required this.catId, required this.id, required this.data}) : super(key: key);
   final String cardName;
   final int? catId;
   final int? id;
   final String data;
 
-  @override
-  State<MyCard> createState() => _MyCardState();
-}
-
-class _MyCardState extends State<MyCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,13 +35,12 @@ class _MyCardState extends State<MyCard> {
                     MaterialPageRoute(
                         builder: (builder) =>
                             EditInfoCard(
-                      cardName: widget.cardName,
-                      catId: widget.catId,
-                      id: widget.id,
+                      cardName: cardName,
+                      catId: catId,
+                      id: id,
                     ),
                   ),
                 );
-                setState(() {});
               },
               icon: const Icon(
                 Icons.mode_edit_outline_outlined,
@@ -59,7 +53,7 @@ class _MyCardState extends State<MyCard> {
         backgroundColor: backgroundColor,
         elevation: 0,
         title: Text(
-          widget.cardName,
+          cardName,
           style: myStyle,
         ),
       ),
@@ -81,31 +75,7 @@ class _MyCardState extends State<MyCard> {
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
                 margin: const EdgeInsets.all(10.0),
-                child: FutureBuilder<List<InfoCardModel>>(
-                  future: DatabaseHelper.instance.getInfoCardData(widget.id),
-                  builder: (BuildContext context,
-                      AsyncSnapshot<List<InfoCardModel>> snapshot) {
-                    if (!snapshot.hasData) {
-                      return const Center(
-                        child: Text('Loading...'),
-                      );
-                    }
-                    return snapshot.data!.isEmpty
-                        ? const Center(
-                            child: Text('no data'),
-                          )
-                        : ListView(
-                            children: snapshot.data!.map((infoCard) {
-                              return Center(
-                                child: Text(
-                                  infoCard.data,
-                                  style: myStyle,
-                                ),
-                              );
-                            }).toList(),
-                          );
-                  },
-                ),
+                child: Provider.of<CardsData>(context).getInfoCardData(id),
               ),
             ),
           ),
@@ -113,4 +83,6 @@ class _MyCardState extends State<MyCard> {
       ),
     );
   }
+
+  
 }
