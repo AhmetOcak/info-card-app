@@ -67,7 +67,7 @@ class DatabaseHelper {
     return infoCardList;
   }
 
-    Future<List<InfoCardModel>> getInfoCardData(int? id) async {
+  Future<List<InfoCardModel>> getInfoCardData(int? id) async {
     Database database = await instance.database;
     var infoCards = await database.query('infoCard',
         orderBy: 'name', where: 'id = ?', whereArgs: [id]);
@@ -76,6 +76,13 @@ class DatabaseHelper {
         : [];
     return infoCardList;
   }
+
+  // getInfoCardDataa(int? id) async {
+  //   Database database = await instance.database;
+  //   var data = await database.rawQuery(
+  //     'SELECT data FROM infocard WHERE id = $id ');
+  //   return data;
+  // }
 
   Future<int> addCategoryCard(Category category) async {
     Database database = await instance.database;

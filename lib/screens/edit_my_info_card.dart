@@ -30,7 +30,7 @@ class EditInfoCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 5.0),
             child: IconButton(
-              onPressed: ()  {
+              onPressed: ()  async {
                 Provider.of<CardsData>(context, listen: false).uptadeInfoCardData(data, catId, cardName, id);
                 Navigator.pop(context);
               },
@@ -58,7 +58,7 @@ class EditInfoCard extends StatelessWidget {
                 onChanged: (val) {
                     data = val;
                 },
-                initialValue: "",
+                initialValue: '',
                 textAlignVertical: TextAlignVertical.top,
                 cursorColor: cardColor,
                 style: myStyle.copyWith(

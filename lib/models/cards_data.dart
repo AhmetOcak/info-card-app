@@ -149,5 +149,8 @@ class CardsData extends ChangeNotifier {
     notifyListeners();
   }
 
+  // Future<String> getData(int? infoCardId) async {
+  //   return DatabaseHelper.instance.getInfoCardDataa(infoCardId).toString();
+  // }
   // INFO CARDS DATA
 }
