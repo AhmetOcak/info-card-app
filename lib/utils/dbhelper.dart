@@ -67,22 +67,23 @@ class DatabaseHelper {
     return infoCardList;
   }
 
-  Future<List<InfoCardModel>> getInfoCardData(int? id) async {
-    Database database = await instance.database;
-    var infoCards = await database.query('infoCard',
-        orderBy: 'name', where: 'id = ?', whereArgs: [id]);
-    List<InfoCardModel> infoCardList = infoCards.isNotEmpty
-        ? infoCards.map((e) => InfoCardModel.fromMap(e)).toList()
-        : [];
-    return infoCardList;
-  }
-
-  // getInfoCardDataa(int? id) async {
+  // Future<List<InfoCardModel>> getInfoCardData(int? id) async {
   //   Database database = await instance.database;
-  //   var data = await database.rawQuery(
-  //     'SELECT data FROM infocard WHERE id = $id ');
-  //   return data;
+  //   var infoCards = await database
+  //       .query('infoCard', orderBy: 'name', where: 'id = ?', whereArgs: [id]);
+  //   List<InfoCardModel> infoCardList = infoCards.isNotEmpty
+  //       ? infoCards.map((e) => InfoCardModel.fromMap(e)).toList()
+  //       : [];
+  //   return infoCardList;
   // }
+
+  Future<String> getInfoCardData(int? id) async {
+    Database database = await instance.database;
+    var data =
+        await database.rawQuery('SELECT data FROM infocard WHERE id = $id ');
+    String reData = data.toString().substring(8, data.toString().length - 2);
+    return reData;
+  }
 
   Future<int> addCategoryCard(Category category) async {
     Database database = await instance.database;
@@ -134,7 +135,7 @@ class DatabaseHelper {
       'infoCard',
       infoCardModel.toMap(),
       where: 'id = ?',
-      whereArgs: [infoCardModel.id], 
+      whereArgs: [infoCardModel.id],
     );
   }
 }

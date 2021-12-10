@@ -102,33 +102,21 @@ class CardsData extends ChangeNotifier {
     await DatabaseHelper.instance.removeInfoCard(id);
     notifyListeners();
   }
-  // INFO CARDS
 
-  // INFO CARDS DATA
-  FutureBuilder<List<InfoCardModel>> getInfoCardData(int? id) {
-    return FutureBuilder<List<InfoCardModel>>(
+  FutureBuilder<String> getData(int? id) {
+    return FutureBuilder<String>(
       future: DatabaseHelper.instance.getInfoCardData(id),
-      builder:
-          (BuildContext context, AsyncSnapshot<List<InfoCardModel>> snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
         if (!snapshot.hasData) {
           return const Center(
-            child: Text('Loading...'),
+            child: Text('Loading'),
           );
         }
         return snapshot.data!.isEmpty
             ? const Center(
                 child: Text('no data'),
               )
-            : ListView(
-                children: snapshot.data!.map((infoCard) {
-                  return Center(
-                    child: Text(
-                      infoCard.data,
-                      style: myStyle,
-                    ),
-                  );
-                }).toList(),
-              );
+            : Text(snapshot.data.toString());
       },
     );
   }
@@ -148,9 +136,4 @@ class CardsData extends ChangeNotifier {
     );
     notifyListeners();
   }
-
-  // Future<String> getData(int? infoCardId) async {
-  //   return DatabaseHelper.instance.getInfoCardDataa(infoCardId).toString();
-  // }
-  // INFO CARDS DATA
 }
