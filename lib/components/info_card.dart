@@ -41,11 +41,11 @@ class InfoCard extends StatelessWidget {
             ),
           );
         },
-        splashColor: cardColor,
+        splashColor: accentColor,
         child: Card(
           elevation: 5,
-          shadowColor: cardColor,
-          color: cardColor,
+          shadowColor: accentColor,
+          color: accentColor,
           margin: EdgeInsets.all(MediaQuery.of(context).size.width / 40),
           child: Column(
             children: [
@@ -59,7 +59,7 @@ class InfoCard extends StatelessWidget {
                     },
                     icon: const Icon(
                       Icons.delete_forever,
-                      color: Colors.red,
+                      color: textColor,
                     ),
                   ),
                 ],

@@ -79,22 +79,22 @@ class _MyCardState extends State<MyCard> {
                 decoration: const BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                      color: cardColor,
+                      color: accentColor,
                       style: BorderStyle.solid,
                       width: 2,
                     ),
                     top: BorderSide(
-                      color: cardColor,
+                      color: accentColor,
                       style: BorderStyle.solid,
                       width: 2,
                     ),
                     left: BorderSide(
-                      color: cardColor,
+                      color: accentColor,
                       style: BorderStyle.solid,
                       width: 2,
                     ),
                     right: BorderSide(
-                      color: cardColor,
+                      color: accentColor,
                       style: BorderStyle.solid,
                       width: 2,
                     ),

@@ -114,9 +114,12 @@ class CardsData extends ChangeNotifier {
         }
         return snapshot.data!.isEmpty
             ? const Center(
-                child: Text('no data'),
+                child: Text('no data',),
               )
-            : Text(snapshot.data.toString());
+            : Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(snapshot.data.toString(), style: myStyle,),
+            );
       },
     );
   }

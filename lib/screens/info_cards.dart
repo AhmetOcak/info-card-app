@@ -45,7 +45,7 @@ class InfoCardScreen extends StatelessWidget {
           Icons.add,
           color: textColor,
         ),
-        backgroundColor: buttonColor,
+        backgroundColor: accentColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

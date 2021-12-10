@@ -37,7 +37,7 @@ class CreateInfoCard extends StatelessWidget {
               onChanged: (val) {
                 cardName = val;
               },
-              cursorColor: buttonColor,
+              cursorColor: accentColor,
               style: myStyle,
               decoration: const InputDecoration(
                 filled: true,
@@ -45,7 +45,7 @@ class CreateInfoCard extends StatelessWidget {
                 hintStyle: myStyle,
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: cardColor,
+                    color: accentColor,
                     width: 2,
                   ),
                   borderRadius: BorderRadius.all(
@@ -54,7 +54,7 @@ class CreateInfoCard extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: cardColor,
+                    color: accentColor,
                     width: 2,
                   ),
                   borderRadius: BorderRadius.all(
@@ -76,7 +76,7 @@ class CreateInfoCard extends StatelessWidget {
             ),
             style: ButtonStyle(
               elevation: MaterialStateProperty.all(10),
-              backgroundColor: MaterialStateProperty.all(buttonColor),
+              backgroundColor: MaterialStateProperty.all(accentColor),
             ),
           ),
         ],

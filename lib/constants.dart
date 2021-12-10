@@ -14,21 +14,21 @@ Column emptyCardWarning(BuildContext context, String text) {
       Icon(
         Icons.block_outlined,
         size: MediaQuery.of(context).size.width / 7,
-        color: cardColor,
+        color: accentColor,
       ),
       Text(
         text,
         style: myStyle.copyWith(
           fontSize: 20,
-          color: cardColor,
+          color: accentColor,
         ),
       ),
     ],
   );
 }
 
-const Color cardColor = Color(0xFF0A1045);
-const Color backgroundColor = Color(0xFF00C2D1);
-const Color accentColor = Color(0xFFF9E900);
-const Color textColor = Color(0xFFEAFFDA);
-const Color buttonColor = Color(0xFFFF570A);
+
+const Color backgroundColor = Color(0xFF000000);
+const Color accentColor = Color(0xFFC9040E);
+const Color textColor = Color(0xFFFFFFFF);
+

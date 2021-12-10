@@ -34,14 +34,14 @@ class CreateCategory extends StatelessWidget {
                 cardName = val;
               },
               style: myStyle,
-              cursorColor: buttonColor,
+              cursorColor: accentColor,
               decoration: const InputDecoration(
                 filled: true,
                 hintText: 'Enter category name',
                 hintStyle: myStyle,
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: cardColor,
+                    color: accentColor,
                     width: 2,
                   ),
                   borderRadius: BorderRadius.all(
@@ -50,7 +50,7 @@ class CreateCategory extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: cardColor,
+                    color: accentColor,
                     width: 2,
                   ),
                   borderRadius: BorderRadius.all(
@@ -72,7 +72,7 @@ class CreateCategory extends StatelessWidget {
             ),
             style: ButtonStyle(
               elevation: MaterialStateProperty.all(10),
-              backgroundColor: MaterialStateProperty.all(buttonColor),
+              backgroundColor: MaterialStateProperty.all(accentColor),
             ),
           ),
         ],
