@@ -60,6 +60,7 @@ class InfoCard extends StatelessWidget {
                     icon: const Icon(
                       Icons.delete_forever,
                       color: textColor,
+                      size: 35,
                     ),
                   ),
                 ],

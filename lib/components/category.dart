@@ -13,7 +13,7 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 4.5,
+      height: MediaQuery.of(context).size.height / 4,
       width: MediaQuery.of(context).size.width / 1.2,
       child: InkWell(
         onTap: () { 
@@ -43,6 +43,7 @@ class CategoryCard extends StatelessWidget {
                     icon: const Icon(
                       Icons.delete_forever,
                       color: textColor,
+                      size: 35,
                     ),
                   ),
                 ],
