@@ -37,7 +37,7 @@ class _EditInfoCardState extends State<EditInfoCard> {
             child: IconButton(
               onPressed: ()  async {
                 Provider.of<CardsData>(context, listen: false).uptadeInfoCardData(widget.data!, widget.catId, widget.cardName, widget.id,);
-                Navigator.pop(context);
+                Navigator.of(context).popUntil(ModalRoute.withName('/home'),);
               },
               icon: const Icon(
                 Icons.check,
@@ -61,9 +61,7 @@ class _EditInfoCardState extends State<EditInfoCard> {
               padding: const EdgeInsets.all(18.0),
               child: TextFormField(
                 onChanged: (val) {
-                    setState(() {
-                      widget.data = val;
-                    });
+                  widget.data = val;
                 },
                 initialValue: widget.data,
                 textAlignVertical: TextAlignVertical.top,
