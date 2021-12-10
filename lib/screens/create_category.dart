@@ -13,7 +13,7 @@ class CreateCategory extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: textColor,),
-          onPressed: (){
+          onPressed: () async {
             Navigator.pop(context);
           },
         ),

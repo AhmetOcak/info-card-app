@@ -3,15 +3,20 @@ import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/models/cards_data.dart';
 import 'package:provider/provider.dart';
 
-class EditInfoCard extends StatelessWidget {
-  EditInfoCard({Key? key, required this.cardName, this.catId, this.id})
+class EditInfoCard extends StatefulWidget {
+  EditInfoCard({Key? key, required this.cardName, this.catId, this.id, this.data})
       : super(key: key);
   final String cardName;
   final int? catId;
   final int? id;
 
-  String data = "";
+  String? data = '';
 
+  @override
+  State<EditInfoCard> createState() => _EditInfoCardState();
+}
+
+class _EditInfoCardState extends State<EditInfoCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +36,7 @@ class EditInfoCard extends StatelessWidget {
             padding: const EdgeInsets.only(right: 5.0),
             child: IconButton(
               onPressed: ()  async {
-                Provider.of<CardsData>(context, listen: false).uptadeInfoCardData(data, catId, cardName, id);
+                Provider.of<CardsData>(context, listen: false).uptadeInfoCardData(widget.data!, widget.catId, widget.cardName, widget.id,);
                 Navigator.pop(context);
               },
               icon: const Icon(
@@ -45,7 +50,7 @@ class EditInfoCard extends StatelessWidget {
         backgroundColor: backgroundColor,
         elevation: 0,
         title: Text(
-          "editing $cardName",
+          "editing ${widget.cardName}",
           style: myStyle,
         ),
       ),
@@ -56,9 +61,11 @@ class EditInfoCard extends StatelessWidget {
               padding: const EdgeInsets.all(18.0),
               child: TextFormField(
                 onChanged: (val) {
-                    data = val;
+                    setState(() {
+                      widget.data = val;
+                    });
                 },
-                initialValue: '',
+                initialValue: widget.data,
                 textAlignVertical: TextAlignVertical.top,
                 cursorColor: cardColor,
                 style: myStyle.copyWith(

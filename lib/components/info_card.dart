@@ -5,15 +5,15 @@ import 'package:info_card_app/screens/my_info_card.dart';
 import 'package:provider/provider.dart';
 
 class InfoCard extends StatelessWidget {
-  const InfoCard(
-      {Key? key,
-      required this.cardName,
-      required this.time,
-      required this.date,
-      required this.catId,
-      required this.id,
-      required this.data})
-      : super(key: key);
+  const InfoCard({
+    Key? key,
+    required this.cardName,
+    required this.time,
+    required this.date,
+    required this.catId,
+    required this.id,
+    required this.data,
+  }) : super(key: key);
 
   final String cardName;
   final String time;
@@ -28,7 +28,7 @@ class InfoCard extends StatelessWidget {
       height: MediaQuery.of(context).size.height / 4,
       width: MediaQuery.of(context).size.width / 1.2,
       child: InkWell(
-        onTap: () {
+        onTap: () async {
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -54,7 +54,8 @@ class InfoCard extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      Provider.of<CardsData>(context, listen: false).deleteInfoCard(id);
+                      Provider.of<CardsData>(context, listen: false)
+                          .deleteInfoCard(id);
                     },
                     icon: const Icon(
                       Icons.delete_forever,

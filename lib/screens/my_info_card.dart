@@ -4,13 +4,24 @@ import 'package:info_card_app/models/cards_data.dart';
 import 'package:info_card_app/screens/edit_my_info_card.dart';
 import 'package:provider/provider.dart';
 
-class MyCard extends StatelessWidget {
-  const MyCard({Key? key, required this.cardName, required this.catId, required this.id, required this.data}) : super(key: key);
+class MyCard extends StatefulWidget {
+  const MyCard(
+      {Key? key,
+      required this.cardName,
+      required this.catId,
+      required this.id,
+      required this.data})
+      : super(key: key);
   final String cardName;
   final int? catId;
   final int? id;
   final String data;
 
+  @override
+  State<MyCard> createState() => _MyCardState();
+}
+
+class _MyCardState extends State<MyCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,13 +42,13 @@ class MyCard extends StatelessWidget {
             child: IconButton(
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (builder) =>
-                            EditInfoCard(
-                      cardName: cardName,
-                      catId: catId,
-                      id: id,
+                  context,
+                  MaterialPageRoute(
+                    builder: (builder) => EditInfoCard(
+                      cardName: widget.cardName,
+                      catId: widget.catId,
+                      id: widget.id,
+                      data: widget.data,
                     ),
                   ),
                 );
@@ -53,7 +64,7 @@ class MyCard extends StatelessWidget {
         backgroundColor: backgroundColor,
         elevation: 0,
         title: Text(
-          cardName,
+          widget.cardName,
           style: myStyle,
         ),
       ),
@@ -67,15 +78,31 @@ class MyCard extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                   border: Border(
-                    bottom: BorderSide(color: cardColor, style: BorderStyle.solid, width: 2),
-                    top: BorderSide(color: cardColor, style: BorderStyle.solid, width: 2),
-                    left: BorderSide(color: cardColor, style: BorderStyle.solid, width: 2),
-                    right: BorderSide(color: cardColor, style: BorderStyle.solid, width: 2),
+                    bottom: BorderSide(
+                      color: cardColor,
+                      style: BorderStyle.solid,
+                      width: 2,
+                    ),
+                    top: BorderSide(
+                      color: cardColor,
+                      style: BorderStyle.solid,
+                      width: 2,
+                    ),
+                    left: BorderSide(
+                      color: cardColor,
+                      style: BorderStyle.solid,
+                      width: 2,
+                    ),
+                    right: BorderSide(
+                      color: cardColor,
+                      style: BorderStyle.solid,
+                      width: 2,
+                    ),
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
                 margin: const EdgeInsets.all(10.0),
-                child: Provider.of<CardsData>(context).getInfoCardData(id),
+                child: Provider.of<CardsData>(context).getData(widget.id),
               ),
             ),
           ),
@@ -83,6 +110,4 @@ class MyCard extends StatelessWidget {
       ),
     );
   }
-
-  
 }
