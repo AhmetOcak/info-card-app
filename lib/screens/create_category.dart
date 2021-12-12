@@ -12,7 +12,10 @@ class CreateCategory extends StatelessWidget {
       backgroundColor: backgroundColor,
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: textColor,),
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+            color: textColor,
+          ),
           onPressed: () async {
             Navigator.pop(context);
           },
@@ -63,7 +66,8 @@ class CreateCategory extends StatelessWidget {
           ElevatedButton(
             onPressed: () async {
               FocusScope.of(context).unfocus();
-              Provider.of<CardsData>(context, listen: false).addCategoryCard(cardName);
+              Provider.of<CardsData>(context, listen: false)
+                  .addCategoryCard(cardName);
               Navigator.pop(context);
             },
             child: const Text(

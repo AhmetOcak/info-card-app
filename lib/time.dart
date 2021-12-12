@@ -1,5 +1,4 @@
-class CUTime {
-  
+class Time {
   static String todaysTime() {
     return DateTime.now().toString().substring(11, 19);
   }
@@ -7,5 +6,4 @@ class CUTime {
   static String todaysDate() {
     return DateTime.now().toString().substring(0, 10);
   }
-
 }

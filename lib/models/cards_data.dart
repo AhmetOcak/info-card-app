@@ -5,7 +5,6 @@ import 'package:info_card_app/components/info_card.dart';
 import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/models/category_model.dart';
 import 'package:info_card_app/models/infocard_model.dart';
-import 'package:info_card_app/random_id.dart';
 import 'package:info_card_app/time.dart';
 import 'package:info_card_app/utils/dbhelper.dart';
 
@@ -26,14 +25,16 @@ class CardsData extends ChangeNotifier {
                     context, "You don't have any category cards."),
               )
             : ListView(
-                children: snapshot.data!.map((category) {
-                  return Center(
-                    child: CategoryCard(
-                      categoryName: category.name,
-                      id: category.id,
-                    ),
-                  );
-                }).toList(),
+                children: snapshot.data!.map(
+                  (category) {
+                    return Center(
+                      child: CategoryCard(
+                        categoryName: category.name,
+                        id: category.id,
+                      ),
+                    );
+                  },
+                ).toList(),
               );
       },
     );
@@ -52,7 +53,12 @@ class CardsData extends ChangeNotifier {
   }
   // CATEGORY CARDS
 
-  // INFO CARD
+  // ****************************************************************************************
+  // ****************************************************************************************
+  // ****************************************************************************************
+  // ****************************************************************************************
+
+  // INFO CARDS
   FutureBuilder<List<InfoCardModel>> getInfoCard(int? categoryId) {
     return FutureBuilder<List<InfoCardModel>>(
       future: DatabaseHelper.instance.getInfoCardList(categoryId),
@@ -69,32 +75,35 @@ class CardsData extends ChangeNotifier {
                     emptyCardWarning(context, "You don't have any info cards."),
               )
             : ListView(
-                children: snapshot.data!.map((infoCardModel) {
-                  return Center(
-                    child: InfoCard(
-                      cardName: infoCardModel.name,
-                      time: infoCardModel.creatingTime,
-                      date: infoCardModel.creatingDay,
-                      catId: categoryId,
-                      id: infoCardModel.id,
-                      data: infoCardModel.data,
-                    ),
-                  );
-                }).toList(),
+                children: snapshot.data!.map(
+                  (infoCardModel) {
+                    return Center(
+                      child: InfoCard(
+                        cardName: infoCardModel.name,
+                        time: infoCardModel.creatingTime,
+                        date: infoCardModel.creatingDay,
+                        catId: categoryId,
+                        id: infoCardModel.id,
+                        data: infoCardModel.data,
+                      ),
+                    );
+                  },
+                ).toList(),
               );
       },
     );
   }
 
   void addInfoCard(String cardName, int? categoryId) async {
-    await DatabaseHelper.instance.addInfoCard(InfoCardModel(
-      name: cardName,
-      data: '',
-      creatingTime: CUTime.todaysTime(),
-      creatingDay: CUTime.todaysDate(),
-      catId: categoryId!,
-      id: GiveID.addId(),
-    ));
+    await DatabaseHelper.instance.addInfoCard(
+      InfoCardModel(
+        name: cardName,
+        data: '',
+        creatingTime: Time.todaysTime(),
+        creatingDay: Time.todaysDate(),
+        catId: categoryId!,
+      ),
+    );
     notifyListeners();
   }
 
@@ -114,12 +123,17 @@ class CardsData extends ChangeNotifier {
         }
         return snapshot.data!.isEmpty
             ? const Center(
-                child: Text('no data',),
+                child: Text(
+                  'no data',
+                ),
               )
             : Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(snapshot.data.toString(), style: myStyle,),
-            );
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  snapshot.data.toString(),
+                  style: myStyle,
+                ),
+              );
       },
     );
   }
@@ -132,11 +146,13 @@ class CardsData extends ChangeNotifier {
         catId: categoryId!,
         name: cardName,
         data: data,
-        creatingTime: CUTime.todaysTime(),
-        creatingDay: CUTime.todaysDate(),
+        creatingTime: Time.todaysTime(),
+        creatingDay: Time.todaysDate(),
         id: infoCardId!,
       ),
     );
     notifyListeners();
   }
+
+  // INFO CARDS
 }

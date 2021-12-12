@@ -4,7 +4,8 @@ import 'package:info_card_app/models/cards_data.dart';
 import 'package:provider/provider.dart';
 
 class EditInfoCard extends StatefulWidget {
-  EditInfoCard({Key? key, required this.cardName, this.catId, this.id, this.data})
+  EditInfoCard(
+      {Key? key, required this.cardName, this.catId, this.id, this.data})
       : super(key: key);
   final String cardName;
   final int? catId;
@@ -35,9 +36,17 @@ class _EditInfoCardState extends State<EditInfoCard> {
           Padding(
             padding: const EdgeInsets.only(right: 5.0),
             child: IconButton(
-              onPressed: ()  async {
-                Provider.of<CardsData>(context, listen: false).uptadeInfoCardData(widget.data!, widget.catId, widget.cardName, widget.id,);
-                Navigator.of(context).popUntil(ModalRoute.withName('/home'),);
+              onPressed: () async {
+                Provider.of<CardsData>(context, listen: false)
+                    .uptadeInfoCardData(
+                  widget.data!,
+                  widget.catId,
+                  widget.cardName,
+                  widget.id,
+                );
+                Navigator.of(context).popUntil(
+                  ModalRoute.withName('/home'),
+                );
               },
               icon: const Icon(
                 Icons.check,
@@ -99,5 +108,3 @@ class _EditInfoCardState extends State<EditInfoCard> {
     );
   }
 }
-
-

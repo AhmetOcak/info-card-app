@@ -67,16 +67,6 @@ class DatabaseHelper {
     return infoCardList;
   }
 
-  // Future<List<InfoCardModel>> getInfoCardData(int? id) async {
-  //   Database database = await instance.database;
-  //   var infoCards = await database
-  //       .query('infoCard', orderBy: 'name', where: 'id = ?', whereArgs: [id]);
-  //   List<InfoCardModel> infoCardList = infoCards.isNotEmpty
-  //       ? infoCards.map((e) => InfoCardModel.fromMap(e)).toList()
-  //       : [];
-  //   return infoCardList;
-  // }
-
   Future<String> getInfoCardData(int? id) async {
     Database database = await instance.database;
     var data =

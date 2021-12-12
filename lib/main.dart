@@ -18,10 +18,21 @@ void main() {
         routes: {
           '/home': (context) => const MyApp(),
           '/createCategory': (context) => CreateCategory(),
-          '/infoCards': (context) => const  InfoCardScreen(catId: null,),
-          '/createInfoCards': (context) => CreateInfoCard(catId: null,),
-          '/editInfoCard': (context) => EditInfoCard(cardName: '',),
-          '/myCard': (context) => const MyCard(cardName: '', catId: null, id: null, data: '',),
+          '/infoCards': (context) => const InfoCardScreen(
+                catId: null,
+              ),
+          '/createInfoCards': (context) => CreateInfoCard(
+                catId: null,
+              ),
+          '/editInfoCard': (context) => EditInfoCard(
+                cardName: '',
+              ),
+          '/myCard': (context) => const MyCard(
+                cardName: '',
+                catId: null,
+                id: null,
+                data: '',
+              ),
         },
         debugShowCheckedModeBanner: false,
       ),

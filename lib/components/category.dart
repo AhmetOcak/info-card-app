@@ -6,7 +6,8 @@ import 'package:info_card_app/screens/info_cards.dart';
 import 'package:provider/provider.dart';
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({Key? key, required this.categoryName, this.id}) : super(key: key);
+  const CategoryCard({Key? key, required this.categoryName, this.id})
+      : super(key: key);
   final String categoryName;
   final int? id;
 
@@ -16,7 +17,7 @@ class CategoryCard extends StatelessWidget {
       height: MediaQuery.of(context).size.height / 4,
       width: MediaQuery.of(context).size.width / 1.2,
       child: InkWell(
-        onTap: () { 
+        onTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -38,7 +39,8 @@ class CategoryCard extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      Provider.of<CardsData>(context, listen: false).deleteCategoryCard(id);
+                      Provider.of<CardsData>(context, listen: false)
+                          .deleteCategoryCard(id);
                     },
                     icon: const Icon(
                       Icons.delete_forever,
@@ -61,12 +63,3 @@ class CategoryCard extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-

@@ -35,11 +35,13 @@ class InfoCardScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => CreateInfoCard(
-                        catId: catId!,
-                      )));
+            context,
+            MaterialPageRoute(
+              builder: (context) => CreateInfoCard(
+                catId: catId!,
+              ),
+            ),
+          );
         },
         child: const Icon(
           Icons.add,
