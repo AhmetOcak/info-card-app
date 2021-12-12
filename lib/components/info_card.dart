@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:info_card_app/constants.dart';
+import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/models/cards_data.dart';
 import 'package:info_card_app/screens/my_info_card.dart';
 import 'package:provider/provider.dart';
