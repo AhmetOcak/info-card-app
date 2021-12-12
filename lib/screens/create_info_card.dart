@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants.dart';
 import 'package:info_card_app/models/cards_data.dart';
-import 'package:info_card_app/random_id.dart';
 import 'package:provider/provider.dart';
 
 class CreateInfoCard extends StatelessWidget {
   CreateInfoCard({Key? key, required this.catId}) : super(key: key);
-  
+
   final int? catId;
   String cardName = "";
 
@@ -17,8 +16,11 @@ class CreateInfoCard extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: backgroundColor,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: textColor,),
-          onPressed: (){
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+            color: textColor,
+          ),
+          onPressed: () {
             Navigator.pop(context);
           },
         ),
@@ -66,8 +68,8 @@ class CreateInfoCard extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () async {
-              Provider.of<CardsData>(context, listen: false).addInfoCard(cardName, catId);
-              GiveID.currentInfoCardId = GiveID.addId() - 1;
+              Provider.of<CardsData>(context, listen: false)
+                  .addInfoCard(cardName, catId);
               Navigator.pop(context);
             },
             child: const Text(

@@ -1,12 +1,19 @@
 class InfoCardModel {
   final int catId;
-  final int id;
+  final int? id;
   final String name;
   final String data;
   final String creatingTime;
   final String creatingDay;
 
-  InfoCardModel({required this.catId, required this.id, required this.name, required this.data, required this.creatingTime, required this.creatingDay});
+  InfoCardModel({
+    required this.catId,
+    this.id,
+    required this.name,
+    required this.data,
+    required this.creatingTime,
+    required this.creatingDay,
+  });
 
   factory InfoCardModel.fromMap(Map<String, dynamic> json) => InfoCardModel(
         catId: json['catId'],

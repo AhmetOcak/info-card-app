@@ -20,7 +20,7 @@ class InfoCard extends StatelessWidget {
   final String date;
   final String data;
   final int? catId;
-  final int id;
+  final int? id;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,7 @@ class InfoCard extends StatelessWidget {
                   IconButton(
                     onPressed: () {
                       Provider.of<CardsData>(context, listen: false)
-                          .deleteInfoCard(id);
+                          .deleteInfoCard(id!);
                     },
                     icon: const Icon(
                       Icons.delete_forever,
