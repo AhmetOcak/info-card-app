@@ -14,8 +14,6 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 4,
-      width: MediaQuery.of(context).size.width / 1.2,
       child: InkWell(
         onTap: () {
           Navigator.push(
@@ -30,7 +28,12 @@ class CategoryCard extends StatelessWidget {
           elevation: 5,
           shadowColor: accentColor,
           color: accentColor,
-          margin: EdgeInsets.all(MediaQuery.of(context).size.width / 40),
+          margin: EdgeInsets.only(
+            top: MediaQuery.of(context).size.width / 30,
+            bottom: MediaQuery.of(context).size.width / 30,
+            left: MediaQuery.of(context).size.width / 10,
+            right: MediaQuery.of(context).size.width / 10,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [

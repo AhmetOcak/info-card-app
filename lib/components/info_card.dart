@@ -25,8 +25,6 @@ class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 4,
-      width: MediaQuery.of(context).size.width / 1.2,
       child: InkWell(
         onTap: () async {
           Navigator.push(
@@ -46,7 +44,12 @@ class InfoCard extends StatelessWidget {
           elevation: 5,
           shadowColor: accentColor,
           color: accentColor,
-          margin: EdgeInsets.all(MediaQuery.of(context).size.width / 40),
+          margin: EdgeInsets.only(
+            top: MediaQuery.of(context).size.width / 30,
+            bottom: MediaQuery.of(context).size.width / 30,
+            left: MediaQuery.of(context).size.width / 10,
+            right: MediaQuery.of(context).size.width / 10,
+          ),
           child: Column(
             children: [
               Row(
@@ -73,39 +76,37 @@ class InfoCard extends StatelessWidget {
                   color: textColor,
                 ),
               ),
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            right: (MediaQuery.of(context).size.width / 100),
-                          ),
-                          child: Text(
-                            time,
-                            style: myStyle.copyWith(
-                              fontSize: 20,
-                            ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                          right: (MediaQuery.of(context).size.width / 100),
+                        ),
+                        child: Text(
+                          time,
+                          style: myStyle.copyWith(
+                            fontSize: 20,
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            right: (MediaQuery.of(context).size.width / 100),
-                          ),
-                          child: Text(
-                            date,
-                            style: myStyle.copyWith(
-                              fontSize: 20,
-                            ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          right: (MediaQuery.of(context).size.width / 100),
+                        ),
+                        child: Text(
+                          date,
+                          style: myStyle.copyWith(
+                            fontSize: 20,
                           ),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),
