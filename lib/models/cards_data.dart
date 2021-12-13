@@ -84,14 +84,21 @@ class CardsData extends ChangeNotifier {
             : ListView(
                 children: snapshot.data!.map(
                   (infoCardModel) {
-                    return Center(
-                      child: InfoCard(
-                        cardName: infoCardModel.name,
-                        time: infoCardModel.creatingTime,
-                        date: infoCardModel.creatingDay,
-                        catId: categoryId,
-                        id: infoCardModel.id,
-                        data: infoCardModel.data,
+                    return SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: InfoCard(
+                              cardName: infoCardModel.name,
+                              time: infoCardModel.creatingTime,
+                              date: infoCardModel.creatingDay,
+                              catId: categoryId,
+                              id: infoCardModel.id,
+                              data: infoCardModel.data,
+                            ),
+                          ),
+                        ],
                       ),
                     );
                   },

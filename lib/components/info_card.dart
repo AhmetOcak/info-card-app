@@ -40,77 +40,87 @@ class InfoCard extends StatelessWidget {
           );
         },
         splashColor: accentColor,
-        child: Card(
-          elevation: 5,
-          shadowColor: accentColor,
-          color: accentColor,
-          margin: EdgeInsets.only(
-            top: MediaQuery.of(context).size.width / 30,
-            bottom: MediaQuery.of(context).size.width / 30,
-            left: MediaQuery.of(context).size.width / 10,
-            right: MediaQuery.of(context).size.width / 10,
-          ),
-          child: Column(
+        child: ICard(id: id, cardName: cardName, time: time, date: date),
+      ),
+    );
+  }
+}
+
+class ICard extends StatelessWidget {
+  const ICard({
+    Key? key,
+    required this.id,
+    required this.cardName,
+    required this.time,
+    required this.date,
+  }) : super(key: key);
+
+  final int? id;
+  final String cardName;
+  final String time;
+  final String date;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 5,
+      shadowColor: accentColor,
+      color: accentColor,
+      margin: EdgeInsets.only(
+        top: MediaQuery.of(context).size.height / 25,
+        bottom: MediaQuery.of(context).size.height / 25,
+        left: MediaQuery.of(context).size.width / 10,
+        right: MediaQuery.of(context).size.width / 10,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Provider.of<CardsData>(context, listen: false)
-                          .deleteInfoCard(id!);
-                    },
-                    icon: const Icon(
-                      Icons.delete_forever,
-                      color: textColor,
-                      size: 35,
-                    ),
-                  ),
-                ],
-              ),
-              Text(
-                cardName,
-                style: const TextStyle(
-                  fontFamily: 'Scheherazade',
-                  fontSize: 35,
+              IconButton(
+                onPressed: () {
+                  Provider.of<CardsData>(context, listen: false)
+                      .deleteInfoCard(id!);
+                },
+                icon: const Icon(
+                  Icons.delete_forever,
                   color: textColor,
+                  size: 35,
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+            ],
+          ),
+          Text(
+            cardName,
+            style: const TextStyle(
+              fontFamily: 'Scheherazade',
+              fontSize: 35,
+              color: textColor,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Column(
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: (MediaQuery.of(context).size.width / 100),
-                        ),
-                        child: Text(
-                          time,
-                          style: myStyle.copyWith(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: (MediaQuery.of(context).size.width / 100),
-                        ),
-                        child: Text(
-                          date,
-                          style: myStyle.copyWith(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ],
+                  Text(
+                    time,
+                    style: myStyle.copyWith(
+                      fontSize: 20,
+                    ),
+                  ),
+                  Text(
+                    date,
+                    style: myStyle.copyWith(
+                      fontSize: 20,
+                    ),
                   ),
                 ],
               ),
             ],
           ),
-        ),
+        ],
       ),
     );
   }

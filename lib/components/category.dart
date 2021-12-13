@@ -29,8 +29,8 @@ class CategoryCard extends StatelessWidget {
           shadowColor: accentColor,
           color: accentColor,
           margin: EdgeInsets.only(
-            top: MediaQuery.of(context).size.width / 30,
-            bottom: MediaQuery.of(context).size.width / 30,
+            top: MediaQuery.of(context).size.height / 25,
+            bottom: MediaQuery.of(context).size.height / 25,
             left: MediaQuery.of(context).size.width / 10,
             right: MediaQuery.of(context).size.width / 10,
           ),
