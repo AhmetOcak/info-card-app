@@ -1,5 +1,3 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:info_card_app/constants/constants.dart';
 import 'package:info_card_app/models/cards_data.dart';
@@ -7,6 +5,8 @@ import 'package:provider/provider.dart';
 
 class CreateCategory extends StatelessWidget {
   String cardName = '';
+
+  CreateCategory({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class CreateCategory extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
+            padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.1, right: MediaQuery.of(context).size.width * 0.1, bottom: MediaQuery.of(context).size.height * 0.02),
             child: TextField(
               onChanged: (val) {
                 cardName = val;

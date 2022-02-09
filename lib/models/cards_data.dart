@@ -27,18 +27,20 @@ class CardsData extends ChangeNotifier {
             : ListView(
                 children: snapshot.data!.map(
                   (category) {
-                    return SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.3,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: CategoryCard(
-                              categoryName: category.name,
-                              id: category.id,
-                            ),
+                    return Column(
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          child: CategoryCard(
+                            categoryName: category.name,
+                            id: category.id,
                           ),
-                        ],
-                      ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
+                      ],
                     );
                   },
                 ).toList(),
@@ -84,22 +86,24 @@ class CardsData extends ChangeNotifier {
             : ListView(
                 children: snapshot.data!.map(
                   (infoCardModel) {
-                    return SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.3,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: InfoCard(
-                              cardName: infoCardModel.name,
-                              time: infoCardModel.creatingTime,
-                              date: infoCardModel.creatingDay,
-                              catId: categoryId,
-                              id: infoCardModel.id,
-                              data: infoCardModel.data,
-                            ),
+                    return Column(
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          child: InfoCard(
+                            cardName: infoCardModel.name,
+                            time: infoCardModel.creatingTime,
+                            date: infoCardModel.creatingDay,
+                            catId: categoryId,
+                            id: infoCardModel.id,
+                            data: infoCardModel.data,
                           ),
-                        ],
-                      ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
+                      ],
                     );
                   },
                 ).toList(),

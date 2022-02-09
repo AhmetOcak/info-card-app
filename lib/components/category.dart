@@ -25,15 +25,7 @@ class CategoryCard extends StatelessWidget {
         },
         splashColor: accentColor,
         child: Card(
-          elevation: 5,
-          shadowColor: accentColor,
           color: accentColor,
-          margin: EdgeInsets.only(
-            top: MediaQuery.of(context).size.height / 25,
-            bottom: MediaQuery.of(context).size.height / 25,
-            left: MediaQuery.of(context).size.width / 10,
-            right: MediaQuery.of(context).size.width / 10,
-          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -42,13 +34,15 @@ class CategoryCard extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      Provider.of<CardsData>(context, listen: false)
-                          .deleteCategoryCard(id);
+                      Provider.of<CardsData>(
+                        context,
+                        listen: false,
+                      ).deleteCategoryCard(id);
                     },
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.delete_forever,
                       color: textColor,
-                      size: 35,
+                      size: MediaQuery.of(context).size.width * 0.08,
                     ),
                   ),
                 ],
@@ -56,7 +50,7 @@ class CategoryCard extends StatelessWidget {
               Text(
                 categoryName,
                 style: myStyle.copyWith(
-                  fontSize: 55,
+                  fontSize: Theme.of(context).textTheme.headline2!.fontSize,
                 ),
               ),
             ],

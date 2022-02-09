@@ -63,15 +63,7 @@ class ICard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
-      shadowColor: accentColor,
       color: accentColor,
-      margin: EdgeInsets.only(
-        top: MediaQuery.of(context).size.height / 25,
-        bottom: MediaQuery.of(context).size.height / 25,
-        left: MediaQuery.of(context).size.width / 10,
-        right: MediaQuery.of(context).size.width / 10,
-      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -83,19 +75,19 @@ class ICard extends StatelessWidget {
                   Provider.of<CardsData>(context, listen: false)
                       .deleteInfoCard(id!);
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.delete_forever,
                   color: textColor,
-                  size: 35,
+                  size: MediaQuery.of(context).size.width * 0.08,
                 ),
               ),
             ],
           ),
           Text(
             cardName,
-            style: const TextStyle(
+            style: TextStyle(
               fontFamily: 'Scheherazade',
-              fontSize: 35,
+              fontSize: Theme.of(context).textTheme.headline3!.fontSize,
               color: textColor,
             ),
           ),
@@ -107,13 +99,13 @@ class ICard extends StatelessWidget {
                   Text(
                     time,
                     style: myStyle.copyWith(
-                      fontSize: 20,
+                      fontSize: Theme.of(context).textTheme.headline6!.fontSize,
                     ),
                   ),
                   Text(
                     date,
                     style: myStyle.copyWith(
-                      fontSize: 20,
+                      fontSize: Theme.of(context).textTheme.headline6!.fontSize,
                     ),
                   ),
                 ],

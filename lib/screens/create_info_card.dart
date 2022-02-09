@@ -36,7 +36,7 @@ class CreateInfoCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
+            padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.1, right: MediaQuery.of(context).size.width * 0.1, bottom: MediaQuery.of(context).size.height * 0.02),
             child: TextField(
               onChanged: (val) {
                 cardName = val;
